@@ -1,0 +1,13 @@
+.buttons {
+  margin: 10%;
+  width: 100px;
+  height: 100px;
+  color: white;
+  background: #228be6;
+}
+.buttons:hover {
+  color: black;
+}
+.buttons:active {
+  background: #145690;
+}/*# sourceMappingURL=App.css.map */

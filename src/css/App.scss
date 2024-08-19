@@ -1,0 +1,18 @@
+$blue: #228be6;
+$activeblue: #145690;
+
+.buttons {
+  margin: 10%;
+  width: 100px;
+  height: 100px;
+  color: white;
+  background: $blue;
+
+  &:hover {
+    color: black;
+  }
+
+  &:active {
+    background: $activeblue;
+  }
+}

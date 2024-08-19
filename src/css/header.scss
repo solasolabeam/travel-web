@@ -1,0 +1,192 @@
+@use 'reset';
+@import url('https://fonts.googleapis.com/css2?family=Marmelad&family=Noto+Serif+KR&family=Sankofa+Display&display=swap');
+
+$border-grey : #d1d1d1;
+
+body {
+    font-family: "Noto Serif KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+button {
+    width: 50px;
+}
+
+%mt-20-wd-1200 {
+    margin: 20px auto;
+    width: 1200px;
+}
+
+.header-container {
+    @extend %mt-20-wd-1200;
+    display: flex;
+    font-size: 40px;
+
+    div:nth-child(1) {
+        flex-grow: 1;
+    }
+
+    div:nth-child(2) {
+        flex-grow: 1;
+    }
+}
+
+.header-bg {
+    margin: 20px auto;
+    width: 100%;
+    background: #eee;
+    // height: 500px;
+    display: flex;
+    justify-content: center;
+
+    div {
+        width: 600px;
+        height: 500px;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+.category-container {
+    @extend %mt-20-wd-1200;
+
+    p {
+        font-size: 40px;
+    }
+
+    ul {
+        // border-top: 1px solid $border-grey;
+        border-bottom: 1px solid $border-grey;
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        padding: 15px;
+
+        li {
+            padding: 8px 30px;
+            // border-right: 1px solid $border-grey;
+            cursor: pointer;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.category-search-container {
+    @extend %mt-20-wd-1200;
+    display: flex;
+    justify-content: space-between;
+
+    select {
+        padding: 10px;
+        // width: ;
+    }
+
+    // input {
+    //     padding: 20px
+    // }
+}
+
+.card-container {
+    @extend %mt-20-wd-1200;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 500px 500px;
+    grid-gap: 20px;
+
+    .card-layout {
+        border: 1px solid #d1d1d1;
+        border-radius: 20px;
+        cursor: pointer;
+        &:hover {
+            border: 3px solid rgba(0, 0, 0, 0.56);
+        }
+
+        .card-area {
+            width: 100%;
+            height: 50%;
+
+            img {
+                width: 100%;
+                height: 100%;
+                // object-fit: cover;
+                border-top-left-radius: 15px;
+                border-top-right-radius: 15px;
+            }
+
+            @mixin card-item($fs, $pt) {
+                margin: 0px;
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-top: $pt;
+                font-size: $fs;
+            }
+
+            .card-tag {
+                @include card-item(25px, 20px);
+            }
+
+            .card-title {
+                @include card-item(30px, 10px);
+                height: 100px
+            }
+
+            .card-addr {
+                @include card-item(15px, 40px);
+            }
+        }
+    }
+
+}
+
+.local-container {
+    @extend %mt-20-wd-1200;
+
+    p {
+        font-size: 40px;
+    }
+
+    .local-griad-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 200px 200px;
+        grid-gap: 30px;
+
+        div {
+            border: 1px solid black;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+        }
+    }
+
+}
+
+
+.footer-container {
+    margin-top: 100px;
+    width: 100%;
+    background-color: #eee;
+    height: 300px;
+}
+
+@media screen and (max-width: 1024px) {
+    .card-container {
+        grid-template-columns: 400px 400px;
+        grid-template-rows: 500px 500px 500px;
+    }
+
+    .local-griad-container {
+        grid-template-columns: 400px 400px;
+        grid-template-rows: 400px 400px 400px 400px 400px;
+    }
+}
