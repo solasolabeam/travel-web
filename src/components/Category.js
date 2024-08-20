@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import getContent from "../api/contentType";
+import { useSelector } from "react-redux";
 
 
 export default function Category() {
-    const [contentType, setContentType] = useState(getContent);
     const [contentTypeVal, setContentTypeVal] = useState('');
     const [cat1, setCat1] = useState([]);
     const [cat1Val, setCat1Val] = useState('');
@@ -13,6 +12,8 @@ export default function Category() {
     const [cat3Val, setCat3Val] = useState('');
 
     const [headerSearch, setHeaderSearch] = useState([]);
+
+    let contentType = useSelector(state => state.contentType)
 
     function getCat1(val) {
         var url = 'https://apis.data.go.kr/B551011/KorService1/categoryCode1';

@@ -1,4 +1,4 @@
-let getData = [{
+let getContentType = [{
     code : 12,
     name : '관광지'
 },{
@@ -26,4 +26,4 @@ let getData = [{
     name : '음식점'
 }];
 
-export default getData;
+export default getContentType;
