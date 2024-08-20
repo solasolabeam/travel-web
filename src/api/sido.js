@@ -12,8 +12,7 @@ var params = {
 const queryString = new URLSearchParams(params).toString();  // url에 쓰기 적합한 querySting으로 return 해준다. 
 const requrl = `${url}?${queryString}&_type=json`;
 
-// const getData = () => fetch(requrl).then(response => response.json())
-const getData = () => fetch(requrl)
+const getSido = () => fetch(requrl)
   .then(response => response.json());
 
 // const getData = async () => {
@@ -22,5 +21,5 @@ const getData = () => fetch(requrl)
 //   return json;
 // }
 
-export default getData;
+export default getSido;
 
