@@ -46,6 +46,43 @@ let gugunVal = createSlice({
     }
 })
 
+let contentTypeVal = createSlice({
+    name: 'contentTypeVal',
+    initialState: '',
+    reducers: {
+        changeContentTypeVal(state, action) {
+            return action.payload
+        }
+    }
+})
+let cat1Val = createSlice({
+    name: 'cat1Val',
+    initialState: '',
+    reducers: {
+        changeCat1CVal(state, action) {
+            return action.payload
+        }
+    }
+})
+let cat2Val = createSlice({
+    name: 'cat1Val',
+    initialState: '',
+    reducers: {
+        changeCat2CVal(state, action) {
+            return action.payload
+        }
+    }
+})
+let cat3Val = createSlice({
+    name: 'cat1Val',
+    initialState: '',
+    reducers: {
+        changeCat3CVal(state, action) {
+            return action.payload
+        }
+    }
+})
+
 
 let headerSearch = createSlice({
     name: 'headerSearch',
@@ -61,6 +98,11 @@ export let { changeSido } = sido.actions
 export let { changeSidoVal } = sidoVal.actions
 export let { changeGugun } = gugun.actions
 export let { changeGugunVal } = gugunVal.actions
+
+export let { changeContentTypeVal } = contentTypeVal.actions
+export let { changeCat1CVal } = cat1Val.actions
+export let { changeCat2CVal } = cat2Val.actions
+export let { changeCat3CVal } = cat3Val.actions
 export let { changeHeaderSearch } = headerSearch.actions
 
 export default configureStore({
@@ -70,6 +112,11 @@ export default configureStore({
         sidoVal: sidoVal.reducer,
         gugun: gugun.reducer,
         gugunVal: gugunVal.reducer,
+
+        contentTypeVal: contentTypeVal.reducer,
+        cat1Val: cat1Val.reducer,
+        cat2Val: cat2Val.reducer,
+        cat3Val: cat3Val.reducer,
         headerSearch: headerSearch.reducer
     }
 })

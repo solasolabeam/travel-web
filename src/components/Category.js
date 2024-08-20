@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { changeCat1CVal, changeCat2CVal, changeCat3CVal, changeContentTypeVal, changeHeaderSearch } from "../store/store";
 
 
 export default function Category() {
-    const [contentTypeVal, setContentTypeVal] = useState('');
     const [cat1, setCat1] = useState([]);
-    const [cat1Val, setCat1Val] = useState('');
     const [cat2, setCat2] = useState([]);
-    const [cat2Val, setCat2Val] = useState('');
     const [cat3, setCat3] = useState([]);
-    const [cat3Val, setCat3Val] = useState('');
 
-    const [headerSearch, setHeaderSearch] = useState([]);
-
+    let dispatch = useDispatch();
     let contentType = useSelector(state => state.contentType)
+    let contentTypeVal = useSelector(state => state.contentTypeVal)
+    let cat1Val = useSelector(state => state.cat1Val)
+    let cat2Val = useSelector(state => state.cat2Val)
+    let cat3Val = useSelector(state => state.cat3Val)
+    let headerSearch = useSelector(state => state.headerSearch);
 
     function getCat1(val) {
         var url = 'https://apis.data.go.kr/B551011/KorService1/categoryCode1';
@@ -34,7 +35,10 @@ export default function Category() {
             .then(response => response.json())
             .then((data) => {
                 setCat1([...data.response.body.items.item])
-                setContentTypeVal(val);
+                dispatch(changeContentTypeVal(val))
+
+                setCat2([])
+                setCat3([])
             })
     }
 
@@ -58,7 +62,8 @@ export default function Category() {
             .then(response => response.json())
             .then((data) => {
                 setCat2([...data.response.body.items.item]);
-                setCat1Val(val);
+                dispatch(changeCat1CVal(val));
+                setCat3([])
             })
     }
 
@@ -83,7 +88,7 @@ export default function Category() {
             .then(response => response.json())
             .then((data) => {
                 setCat3([...data.response.body.items.item]);
-                setCat2Val(val);
+                dispatch(changeCat2CVal(val))
             })
     }
 
@@ -109,8 +114,8 @@ export default function Category() {
         fetch(requrl)
             .then(response => response.json())
             .then((data) => {
-                setHeaderSearch([...data.response.body.items.item]);
-                setCat3Val(val);
+                dispatch(changeHeaderSearch([...data.response.body.items.item]))
+                dispatch(changeCat3CVal(val));
             })
     }
 
