@@ -1,5 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { changeGugun, changeGugunVal, changeHeaderSearch, changeKeyword, changeSidoVal } from '../store/store';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
 export default function SidoGugun() {
@@ -34,7 +36,7 @@ export default function SidoGugun() {
         fetch(requrl)
             .then((response) => response.json())
             .then((data) => {
-                if(e.target.value == '') {
+                if (e.target.value == '') {
                     dispatch(changeGugun([]))
                 } else {
                     dispatch(changeGugun([...data.response.body.items.item]))
@@ -47,7 +49,7 @@ export default function SidoGugun() {
         console.log('cat1Val', cat1Val);
         console.log('cat2Val', cat2Val);
         console.log('cat3Val', cat3Val);
-        if(e.keyCode == '13') {
+        if (e.keyCode == '13') {
             activeSearch();
         }
     }
@@ -136,7 +138,10 @@ export default function SidoGugun() {
                     })
                 }
             </select>
-            <input type="text" value={keyword} onChange={(e) => dispatch(changeKeyword(e.target.value))} onKeyUp={(e) => activeEnter(e)} />
+            <div>
+                <input type="text" value={keyword} onChange={(e) => dispatch(changeKeyword(e.target.value))} onKeyUp={(e) => activeEnter(e)} />
+                <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" onClick={()=>console.log('123')}/>
+            </div>
         </div>
     )
 }
