@@ -104,6 +104,16 @@ let keyword = createSlice({
     }
 })
 
+let addRow = createSlice({
+    name: 'addRow',
+    initialState: 2,
+    reducers: {
+        changeRow(state, action) {
+            return action.payload
+        }
+    }
+})
+
 export let { changeSido } = sido.actions
 export let { changeSidoVal } = sidoVal.actions
 export let { changeGugun } = gugun.actions
@@ -116,6 +126,7 @@ export let { changeCat3CVal } = cat3Val.actions
 export let { changeHeaderSearch } = headerSearch.actions
 export let { changeKeyword } = keyword.actions
 
+export let {changeRow} = addRow.actions
 
 
 export default configureStore({
@@ -131,6 +142,8 @@ export default configureStore({
         cat2Val: cat2Val.reducer,
         cat3Val: cat3Val.reducer,
         headerSearch: headerSearch.reducer,
-        keyword: keyword.reducer
+        keyword: keyword.reducer,
+
+        addRow:addRow.reducer
     }
 })

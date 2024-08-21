@@ -4,16 +4,19 @@
 $border-grey : #d1d1d1;
 
 body {
+    margin: 0;
     font-family: "Noto Serif KR", serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
 }
 
+div,
+input,
+select,
 button {
-    width: 50px;
+    box-sizing: border-box;
 }
-
 
 %mt-20-wd-1200 {
     margin: 20px auto;
@@ -72,12 +75,13 @@ button {
             padding: 8px 30px;
             // border-right: 1px solid $border-grey;
             cursor: pointer;
+
             &:hover {
                 text-decoration: underline;
             }
         }
     }
-    
+
 }
 
 .category-search-container {
@@ -90,15 +94,34 @@ button {
         width: 200px;
         text-align: center;
         margin-right: 10px;
-        border-radius: 5px
+        border-radius: 5px;
+        border: 1px solid $border-grey;
     }
 
-    input {
-        padding: 10px;
-        margin-left: auto;
-        width: 400px;
-        outline: none;
-        border-radius: 5px
+    div {
+        position: relative;
+
+        input {
+
+            padding: 10px;
+            margin-left: auto;
+            width: 400px;
+            outline: none;
+            border-radius: 5px;
+            border: 1px solid $border-grey;
+
+            &:focus {
+                // box-shadow: 0px 0px 5px #444
+                border: 2px solid black;
+            }
+
+        }
+        .search-icon{
+            position: absolute;
+            top: 10px;;
+            right: 15px;
+            cursor: pointer;
+        }
     }
 
 }
@@ -107,13 +130,15 @@ button {
     @extend %mt-20-wd-1200;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 500px 500px;
+    // grid-template-rows: 500px 500px;
+    // grid-template-rows: repeat(2,500px) ;
     grid-gap: 20px;
 
     .card-layout {
         border: 1px solid #d1d1d1;
         border-radius: 20px;
         cursor: pointer;
+
         &:hover {
             border: 3px solid rgba(0, 0, 0, 0.56);
         }
@@ -153,6 +178,23 @@ button {
         }
     }
 
+}
+
+.card-btn {
+    @extend %mt-20-wd-1200;
+    text-align: center;
+
+    button {
+        padding: 20px;
+        width: 160px;
+        border-radius: 10px;
+        border: 1px solid $border-grey;
+        font-size: 20px;
+        background-color: transparent;
+        cursor: pointer;
+        color: #8a8a8a;
+        font-family: "Noto Serif KR", serif;
+    }
 }
 
 .local-container {

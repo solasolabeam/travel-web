@@ -19,6 +19,8 @@ export default function SidoGugun() {
     let cat2Val = useSelector(state => state.cat2Val)
     let cat3Val = useSelector(state => state.cat3Val)
 
+    let addRow = useSelector(state => state.addRow)
+
     function sidoChange(e) {
         var url = 'http://apis.data.go.kr/B551011/KorService1/areaCode1';
         var key = 'WNBEfQ1MXM62Fv6qETObrCjjwWv7ji1iNrMTCVWwk6ET3BB8YmqPhT/uX6boztyIRyPzD40LtfLBGQTcimcXQA==';
@@ -46,9 +48,6 @@ export default function SidoGugun() {
         dispatch(changeSidoVal(e.target.value))
     }
     function activeEnter(e) {
-        console.log('cat1Val', cat1Val);
-        console.log('cat2Val', cat2Val);
-        console.log('cat3Val', cat3Val);
         if (e.keyCode == '13') {
             activeSearch();
         }
@@ -140,7 +139,7 @@ export default function SidoGugun() {
             </select>
             <div>
                 <input type="text" value={keyword} onChange={(e) => dispatch(changeKeyword(e.target.value))} onKeyUp={(e) => activeEnter(e)} />
-                <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" onClick={()=>console.log('123')}/>
+                <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" onClick={() => { activeSearch() }} />
             </div>
         </div>
     )

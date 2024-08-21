@@ -3,15 +3,22 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 import noIMG from '../img/No_Image_Available.jpg';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { changeRow } from "../store/store";
 
 export default function CardPart() {
-
+    let dispatch = useDispatch()
     let headerSearch = useSelector(state => state.headerSearch)
+    let addRow = useSelector(state => state.addRow);
+
+    function getRow() {
+        dispatch(changeRow(addRow + 1))
+    }
+
 
     return (
         <>
-            <div className='card-container'>
+            <div className='card-container' style={{ gridTemplateRows: `repeat(${addRow},500px)` }}>
                 {
                     headerSearch.map((v, i) => {
                         return (
@@ -31,7 +38,7 @@ export default function CardPart() {
 
             </div>
             <div className="card-btn">
-                <button>더보기</button>
+                <button onClick={() => { getRow() }}>더보기</button>
             </div>
         </>
     )
