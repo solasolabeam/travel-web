@@ -26,4 +26,4 @@ const requrl = `${url}?${queryString}&_type=json`;
 const getData = () => fetch(requrl)
   .then(response => response.json());
 
-export default getData;
+export default keyword-search;

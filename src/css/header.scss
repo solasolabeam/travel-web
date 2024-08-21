@@ -14,6 +14,7 @@ button {
     width: 50px;
 }
 
+
 %mt-20-wd-1200 {
     margin: 20px auto;
     width: 1200px;
@@ -76,21 +77,30 @@ button {
             }
         }
     }
+    
 }
 
 .category-search-container {
     @extend %mt-20-wd-1200;
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
 
     select {
         padding: 10px;
-        // width: ;
+        width: 200px;
+        text-align: center;
+        margin-right: 10px;
+        border-radius: 5px
     }
 
-    // input {
-    //     padding: 20px
-    // }
+    input {
+        padding: 10px;
+        margin-left: auto;
+        width: 400px;
+        outline: none;
+        border-radius: 5px
+    }
+
 }
 
 .card-container {

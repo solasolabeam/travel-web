@@ -13,8 +13,6 @@ export default function Category() {
     let contentTypeVal = useSelector(state => state.contentTypeVal)
     let cat1Val = useSelector(state => state.cat1Val)
     let cat2Val = useSelector(state => state.cat2Val)
-    let cat3Val = useSelector(state => state.cat3Val)
-    let headerSearch = useSelector(state => state.headerSearch);
 
     function getCat1(val) {
         var url = 'https://apis.data.go.kr/B551011/KorService1/categoryCode1';
@@ -40,6 +38,9 @@ export default function Category() {
                 setCat2([])
                 setCat3([])
             })
+            dispatch(changeCat1CVal(''))
+            dispatch(changeCat2CVal(''))
+            dispatch(changeCat3CVal(''))
     }
 
     function getCat2(val) {
@@ -63,8 +64,11 @@ export default function Category() {
             .then((data) => {
                 setCat2([...data.response.body.items.item]);
                 dispatch(changeCat1CVal(val));
+
                 setCat3([])
             })
+            dispatch(changeCat2CVal(''))
+            dispatch(changeCat3CVal(''))
     }
 
     function getCat3(val) {
@@ -89,7 +93,9 @@ export default function Category() {
             .then((data) => {
                 setCat3([...data.response.body.items.item]);
                 dispatch(changeCat2CVal(val))
+
             })
+            dispatch(changeCat3CVal(''))
     }
 
     function cat3Click(val) {

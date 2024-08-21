@@ -20,7 +20,7 @@ let sido = createSlice({
 })
 let sidoVal = createSlice({
     name: 'sidoVal', //state이름 ~
-    initialState: 0, //값
+    initialState: '', //값
     reducers: {
         changeSidoVal(state, action) {
             return action.payload
@@ -38,7 +38,7 @@ let gugun = createSlice({
 })
 let gugunVal = createSlice({
     name: 'gugunVal', //state이름 ~
-    initialState: 0, //값
+    initialState: '', //값
     reducers: {
         changeGugunVal(state, action) {
             return action.payload
@@ -94,6 +94,16 @@ let headerSearch = createSlice({
     }
 })
 
+let keyword = createSlice({
+    name: 'keyword',
+    initialState: '',
+    reducers: {
+        changeKeyword(state, action) {
+            return action.payload
+        }
+    }
+})
+
 export let { changeSido } = sido.actions
 export let { changeSidoVal } = sidoVal.actions
 export let { changeGugun } = gugun.actions
@@ -104,6 +114,9 @@ export let { changeCat1CVal } = cat1Val.actions
 export let { changeCat2CVal } = cat2Val.actions
 export let { changeCat3CVal } = cat3Val.actions
 export let { changeHeaderSearch } = headerSearch.actions
+export let { changeKeyword } = keyword.actions
+
+
 
 export default configureStore({
     reducer: {
@@ -117,6 +130,7 @@ export default configureStore({
         cat1Val: cat1Val.reducer,
         cat2Val: cat2Val.reducer,
         cat3Val: cat3Val.reducer,
-        headerSearch: headerSearch.reducer
+        headerSearch: headerSearch.reducer,
+        keyword: keyword.reducer
     }
 })

@@ -17,7 +17,6 @@ import Footer from './components/Footer';
 import getSido from './api/sido';
 // import getCat1 from './api/cat1';
 import getHeaderSearch from './api/header-search';
-import getKeywordSearch from './api/keyword-search';
 import { useDispatch } from 'react-redux';
 import { changeHeaderSearch, changeSido } from './store/store';
 
