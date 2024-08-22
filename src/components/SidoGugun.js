@@ -57,10 +57,10 @@ export default function SidoGugun() {
     }
     function activeEnter(e) {
         if (e.keyCode == '13') {
-            dispatch(changeRow(1))
+            addRow == 1 ? activeSearch() : dispatch(changeRow(1))
         }
     }
-    function activeSearch(param) {
+    function activeSearch() {
         if (keyword == '') {
             var url = 'https://apis.data.go.kr/B551011/KorService1/areaBasedList1';
             var key = 'WNBEfQ1MXM62Fv6qETObrCjjwWv7ji1iNrMTCVWwk6ET3BB8YmqPhT/uX6boztyIRyPzD40LtfLBGQTcimcXQA==';
@@ -156,7 +156,7 @@ export default function SidoGugun() {
                 </select>
                 <div>
                     <input type="text" value={keyword} onChange={(e) => dispatch(changeKeyword(e.target.value))} onKeyUp={(e) => activeEnter(e)} />
-                    <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" onClick={() => { dispatch(changeRow(1)) }} />
+                    <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" onClick={() => { addRow == 1 ? activeSearch() : dispatch(changeRow(1)) }} />
                 </div>
             </div>
             {/* Cart Parts */}
