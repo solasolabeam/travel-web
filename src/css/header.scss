@@ -181,7 +181,9 @@ button {
     }
 
 }
-
+.none {
+    display: none;
+}
 .card-btn {
     @extend %mt-20-wd-1200;
     text-align: center;
@@ -199,6 +201,17 @@ button {
         &:active {
             background-color: #c9c8c8
         }
+    }
+}
+
+.no-item {
+    @extend %mt-20-wd-1200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 800px;
+    p {
+        font-size: 50px;
     }
 }
 

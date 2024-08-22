@@ -160,28 +160,41 @@ export default function SidoGugun() {
                 </div>
             </div>
             {/* Cart Parts */}
-            <div className='card-container' style={{ gridTemplateRows: `repeat(${addRow * 2},500px)` }}>
-                {
-                    headerSearch.map((v, i) => {
-                        return (
-                            <div className='card-layout'>
-                                <div className='card-area'>
-                                    {v.firstimage == '' ? <img src={noIMG} /> : <img src={v.firstimage} />}
-                                </div>
-                                <div className='card-area'>
-                                    <p className='card-tag'>{v.cat1}</p>
-                                    <p className='card-title'>[{v.areacode}] {v.title}</p>
-                                    <p className='card-addr'><FontAwesomeIcon icon={faLocationDot} /> {v.addr1}</p>
-                                </div>
-                            </div>
-                        )
-                    })
-                }
-
-            </div>
+            {
+                headerSearch.length != 0 ?
+                    <Card headerSearch={headerSearch} addRow={addRow} />
+                    :
+                    <div className="no-item">
+                        <p>"검색 결과가 존재하지 않습니다"</p>
+                    </div>
+            }
+            
             <div className="card-btn">
-                <button onClick={() => { getRow() }}>더보기</button>
+                <button className={`${headerSearch.length == 0 && 'none'}`} onClick={() => { getRow() }}>더보기</button>
             </div>
         </>
+    )
+}
+
+function Card(props) {
+    return (
+        <div className='card-container' style={{ gridTemplateRows: `repeat(${props.addRow * 2},500px)` }}>
+            {
+                props.headerSearch.map((v, i) => {
+                    return (
+                        <div className='card-layout'>
+                            <div className='card-area'>
+                                {v.firstimage == '' ? <img src={noIMG} /> : <img src={v.firstimage} />}
+                            </div>
+                            <div className='card-area'>
+                                <p className='card-tag'>{v.cat1}</p>
+                                <p className='card-title'>[{v.areacode}] {v.title}</p>
+                                <p className='card-addr'><FontAwesomeIcon icon={faLocationDot} /> {v.addr1}</p>
+                            </div>
+                        </div>
+                    )
+                })
+            }
+        </div>
     )
 }
