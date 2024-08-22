@@ -8,7 +8,6 @@ import './css/header.scss';
 import Header from './components/Header';
 import Category from './components/Category';
 import SidoGugun from './components/SidoGugun';
-import CardPart from './components/CardPart';
 import RecommendPart from './components/RecommendPart';
 import Footer from './components/Footer';
 
@@ -34,7 +33,6 @@ function App() {
       <Header />
       <Category />
       <SidoGugun />
-      <CardPart />
       <RecommendPart />
       <Footer />
     </>

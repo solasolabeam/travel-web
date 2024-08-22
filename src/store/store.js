@@ -106,7 +106,7 @@ let keyword = createSlice({
 
 let addRow = createSlice({
     name: 'addRow',
-    initialState: 2,
+    initialState: 1,
     reducers: {
         changeRow(state, action) {
             return action.payload
