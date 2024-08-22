@@ -132,15 +132,17 @@ button {
     grid-template-columns: 1fr 1fr 1fr;
     // grid-template-rows: 500px 500px;
     // grid-template-rows: repeat(2,500px) ;
-    grid-gap: 20px;
+    gap: 50px;
 
     .card-layout {
         border: 1px solid #d1d1d1;
         border-radius: 20px;
+        box-shadow: 0px 0px 10px #c9c8c8;
         cursor: pointer;
 
         &:hover {
-            border: 3px solid rgba(0, 0, 0, 0.56);
+            // border: 3px solid rgba(0, 0, 0, 0.56);
+            
         }
 
         .card-area {
@@ -168,7 +170,7 @@ button {
             }
 
             .card-title {
-                @include card-item(30px, 10px);
+                @include card-item(25px, 10px);
                 height: 100px
             }
 
@@ -194,6 +196,9 @@ button {
         cursor: pointer;
         color: #8a8a8a;
         font-family: "Noto Serif KR", serif;
+        &:active {
+            background-color: #c9c8c8
+        }
     }
 }
 
