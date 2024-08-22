@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeGugun, changeGugunVal, changeHeaderSearch, changeKeyword, changeSidoVal } from '../store/store';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 //Font Awesome
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
@@ -10,7 +10,7 @@ import noIMG from '../img/No_Image_Available.jpg';
 import { changeRow } from "../store/store";
 
 export default function SidoGugun() {
-    const [text, setText] = useState('')
+    const [addRow, setAddRow] = useState(1)
 
     let dispatch = useDispatch()
     let sido = useSelector(state => state.sido)
@@ -25,7 +25,11 @@ export default function SidoGugun() {
     let cat3Val = useSelector(state => state.cat3Val)
 
     let headerSearch = useSelector(state => state.headerSearch)
-    let addRow = useSelector(state => state.addRow);
+    // let addRow = useSelector(state => state.addRow);
+
+    useEffect(()=>{
+        activeSearch()
+    },[addRow])
 
     function sidoChange(e) {
         var url = 'http://apis.data.go.kr/B551011/KorService1/areaCode1';
@@ -64,7 +68,7 @@ export default function SidoGugun() {
             var key = 'WNBEfQ1MXM62Fv6qETObrCjjwWv7ji1iNrMTCVWwk6ET3BB8YmqPhT/uX6boztyIRyPzD40LtfLBGQTcimcXQA==';
             var params = {
                 serviceKey: key,
-                numOfRows: '6',
+                numOfRows: addRow == 1 ? 6 : (6 * addRow),
                 pageNo: '1',
                 MobileOS: 'ETC',
                 MobileApp: 'AppTest',
@@ -83,7 +87,11 @@ export default function SidoGugun() {
             fetch(requrl)
                 .then(response => response.json())
                 .then((data) => {
-                    dispatch(changeHeaderSearch([...data.response.body.items.item]))
+                    if (data.response.body.items.length == 0) {
+                        dispatch(changeHeaderSearch([]))
+                    } else {
+                        dispatch(changeHeaderSearch([...data.response.body.items.item]))
+                    }
                 })
         } else {
             var url = 'https://apis.data.go.kr/B551011/KorService1/searchKeyword1';
@@ -93,7 +101,7 @@ export default function SidoGugun() {
                 MobileApp: 'AppTest',
                 MobileOS: 'ETC',
                 pageNo: '1',
-                numOfRows: '6',
+                numOfRows: addRow == 1 ? 6 : (6 * addRow),
                 listYN: 'Y',
                 arrange: 'A',
                 contentTypeId: contentTypeVal,
@@ -116,13 +124,13 @@ export default function SidoGugun() {
                     } else {
                         dispatch(changeHeaderSearch([...data.response.body.items.item]))
                     }
-
                 })
         }
     }
 
     function getRow() {
-        dispatch(changeRow(addRow + 1))
+        // dispatch(changeRow(addRow + 1))
+        setAddRow( addRow + 1 )
     }
 
     return (
@@ -155,7 +163,7 @@ export default function SidoGugun() {
                 </div>
             </div>
             {/* Cart Parts */}
-            <div className='card-container' style={{ gridTemplateRows: `repeat(${addRow + 1},500px)` }}>
+            <div className='card-container' style={{ gridTemplateRows: `repeat(${addRow * 2},500px)` }}>
                 {
                     headerSearch.map((v, i) => {
                         return (
@@ -175,7 +183,10 @@ export default function SidoGugun() {
 
             </div>
             <div className="card-btn">
-                <button onClick={() => { getRow() }}>더보기</button>
+                <button onClick={() => { 
+                    getRow() 
+                    // activeSearch()
+                    }}>더보기</button>
             </div>
         </>
     )

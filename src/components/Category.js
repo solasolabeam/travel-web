@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeCat1CVal, changeCat2CVal, changeCat3CVal, changeContentTypeVal, changeHeaderSearch } from "../store/store";
 
@@ -38,9 +38,9 @@ export default function Category() {
                 setCat2([])
                 setCat3([])
             })
-            dispatch(changeCat1CVal(''))
-            dispatch(changeCat2CVal(''))
-            dispatch(changeCat3CVal(''))
+        dispatch(changeCat1CVal(''))
+        dispatch(changeCat2CVal(''))
+        dispatch(changeCat3CVal(''))
     }
 
     function getCat2(val) {
@@ -67,8 +67,8 @@ export default function Category() {
 
                 setCat3([])
             })
-            dispatch(changeCat2CVal(''))
-            dispatch(changeCat3CVal(''))
+        dispatch(changeCat2CVal(''))
+        dispatch(changeCat3CVal(''))
     }
 
     function getCat3(val) {
@@ -95,7 +95,7 @@ export default function Category() {
                 dispatch(changeCat2CVal(val))
 
             })
-            dispatch(changeCat3CVal(''))
+        dispatch(changeCat3CVal(''))
     }
 
     function cat3Click(val) {
