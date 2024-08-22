@@ -10,8 +10,6 @@ import noIMG from '../img/No_Image_Available.jpg';
 import { changeRow } from "../store/store";
 
 export default function SidoGugun() {
-    const [addRow, setAddRow] = useState(1)
-
     let dispatch = useDispatch()
     let sido = useSelector(state => state.sido)
     let sidoVal = useSelector(state => state.sidoVal)
@@ -25,11 +23,11 @@ export default function SidoGugun() {
     let cat3Val = useSelector(state => state.cat3Val)
 
     let headerSearch = useSelector(state => state.headerSearch)
-    // let addRow = useSelector(state => state.addRow);
+    let addRow = useSelector(state => state.addRow);
 
-    useEffect(()=>{
+    useEffect(() => {
         activeSearch()
-    },[addRow])
+    }, [addRow])
 
     function sidoChange(e) {
         var url = 'http://apis.data.go.kr/B551011/KorService1/areaCode1';
@@ -59,16 +57,16 @@ export default function SidoGugun() {
     }
     function activeEnter(e) {
         if (e.keyCode == '13') {
-            activeSearch();
+            dispatch(changeRow(1))
         }
     }
-    function activeSearch() {
+    function activeSearch(param) {
         if (keyword == '') {
             var url = 'https://apis.data.go.kr/B551011/KorService1/areaBasedList1';
             var key = 'WNBEfQ1MXM62Fv6qETObrCjjwWv7ji1iNrMTCVWwk6ET3BB8YmqPhT/uX6boztyIRyPzD40LtfLBGQTcimcXQA==';
             var params = {
                 serviceKey: key,
-                numOfRows: addRow == 1 ? 6 : (6 * addRow),
+                numOfRows: (6 * addRow),
                 pageNo: '1',
                 MobileOS: 'ETC',
                 MobileApp: 'AppTest',
@@ -101,7 +99,7 @@ export default function SidoGugun() {
                 MobileApp: 'AppTest',
                 MobileOS: 'ETC',
                 pageNo: '1',
-                numOfRows: addRow == 1 ? 6 : (6 * addRow),
+                numOfRows: (6 * addRow),
                 listYN: 'Y',
                 arrange: 'A',
                 contentTypeId: contentTypeVal,
@@ -129,8 +127,7 @@ export default function SidoGugun() {
     }
 
     function getRow() {
-        // dispatch(changeRow(addRow + 1))
-        setAddRow( addRow + 1 )
+        dispatch(changeRow(addRow + 1))
     }
 
     return (
@@ -159,7 +156,7 @@ export default function SidoGugun() {
                 </select>
                 <div>
                     <input type="text" value={keyword} onChange={(e) => dispatch(changeKeyword(e.target.value))} onKeyUp={(e) => activeEnter(e)} />
-                    <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" onClick={() => { activeSearch() }} />
+                    <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" onClick={() => { dispatch(changeRow(1)) }} />
                 </div>
             </div>
             {/* Cart Parts */}
@@ -183,10 +180,7 @@ export default function SidoGugun() {
 
             </div>
             <div className="card-btn">
-                <button onClick={() => { 
-                    getRow() 
-                    // activeSearch()
-                    }}>더보기</button>
+                <button onClick={() => { getRow() }}>더보기</button>
             </div>
         </>
     )

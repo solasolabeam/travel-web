@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeCat1CVal, changeCat2CVal, changeCat3CVal, changeContentTypeVal, changeHeaderSearch } from "../store/store";
+import { changeCat1CVal, changeCat2CVal, changeCat3CVal, changeContentTypeVal, changeHeaderSearch, changeRow } from "../store/store";
 
 
 export default function Category() {
@@ -121,7 +121,8 @@ export default function Category() {
             .then(response => response.json())
             .then((data) => {
                 dispatch(changeHeaderSearch([...data.response.body.items.item]))
-                dispatch(changeCat3CVal(val));
+                dispatch(changeCat3CVal(val))
+                dispatch(changeRow(1))
             })
     }
 
