@@ -17,6 +17,8 @@ import getSido from './api/sido';
 import { useDispatch } from 'react-redux';
 import { changeSido } from './store/store';
 
+import { Route, Routes, Link } from 'react-router-dom';
+
 
 function App() {
   let dispatch = useDispatch();
@@ -28,10 +30,22 @@ function App() {
 
   return (
     <>
+      
       <Header />
-      <Category />
-      <SidoGugun />
-      <RecommendPart />
+
+
+      <Routes>
+        <Route path='/' element={
+          <>
+                <Category />
+                <SidoGugun />
+                <RecommendPart />
+                </>
+        }/>
+        <Route path='/detail' element={<div>상세페이지</div>}/>
+        <Route path='/about' element={<div>페이지</div>}/>
+      </Routes>
+
       <Footer />
     </>
   );
