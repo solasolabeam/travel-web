@@ -30,20 +30,20 @@ function App() {
 
   return (
     <>
-      
+
       <Header />
 
 
       <Routes>
         <Route path='/' element={
           <>
-                <Category />
-                <SidoGugun />
-                <RecommendPart />
-                </>
-        }/>
-        <Route path='/detail' element={<div>상세페이지</div>}/>
-        <Route path='/about' element={<div>페이지</div>}/>
+            <Category />
+            <SidoGugun />
+            <RecommendPart />
+          </>
+        } />
+        <Route path='/detail' element={<div>상세페이지</div>} />
+        <Route path='/about' element={<div>페이지</div>} />
       </Routes>
 
       <Footer />
