@@ -20,7 +20,7 @@ button {
 
 %mt-20-wd-1200 {
     margin: 20px auto;
-    width: 1200px;
+    max-width: 1200px;
 }
 
 .header-container {
@@ -47,7 +47,7 @@ button {
 
     div {
         width: 600px;
-        height: 500px;
+        height: 450px;
 
         img {
             width: 100%;
@@ -82,6 +82,18 @@ button {
         }
     }
 
+}
+
+.subCat-container {
+    @extend %mt-20-wd-1200;
+    display: flex;
+    gap: 15px;
+
+    div {
+        border: 1px solid $border-grey;
+        border-radius: 50px;
+        padding: 15px;
+    }
 }
 
 .category-search-container {
