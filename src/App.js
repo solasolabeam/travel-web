@@ -17,12 +17,12 @@ import getSido from './api/sido';
 import { useDispatch } from 'react-redux';
 import { changeSido } from './store/store';
 
-import { Route, Routes, Link } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 
 
 function App() {
   let dispatch = useDispatch();
-
+  
   useEffect(() => {
     getSido().then((data) => dispatch(changeSido(data.response.body.items.item)))
     // getHeaderSearch().then((data) => dispatch(changeHeaderSearch(data.response.body.items.item)))
@@ -30,10 +30,9 @@ function App() {
 
   return (
     <>
-
+      
       <Header />
-
-
+      
       <Routes>
         <Route path='/' element={
           <>
@@ -42,8 +41,8 @@ function App() {
             <RecommendPart />
           </>
         } />
-        <Route path='/detail' element={<div>상세페이지</div>} />
-        <Route path='/about' element={<div>페이지</div>} />
+        <Route path='/detail' element={<div>페이지</div>} />
+        <Route path='/*' element={<div>없는페이지</div>} />
       </Routes>
 
       <Footer />
