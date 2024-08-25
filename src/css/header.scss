@@ -23,7 +23,8 @@ body {
 div,
 input,
 select,
-button {
+button,
+ul {
     box-sizing: border-box;
 }
 
@@ -47,7 +48,6 @@ button {
 }
 
 .header-bg {
-    margin: 20px auto;
     width: 100%;
     background: #eee;
     // height: 500px;
@@ -66,22 +66,20 @@ button {
 }
 
 .category-container {
-    @extend %mt-20-wd-1200;
-
-    p {
-        font-size: 40px;
-    }
+    max-width: 1200px;
+    margin: auto;
 
     ul {
-        border-bottom: 1px solid $border-grey;
+        margin: 0;
         list-style: none;
         display: flex;
-        justify-content: center;
+        // justify-content: center;
         padding: 15px;
+        padding-left: 0;
+        text-align: left;
 
         li {
             padding: 8px 30px;
-            // border-right: 1px solid $border-grey;
             cursor: pointer;
 
             &:hover {
@@ -100,9 +98,16 @@ button {
 
     div {
         border: 1px solid $border-grey;
+        background: transparent;
         border-radius: 50px;
         padding: 7px;
         cursor: pointer;
+
+
+        &:focus {
+            background: rgb(227, 255, 227);
+            border: 1px solid rgb(71, 139, 71);
+        }
 
         p {
             margin: 0px;
@@ -111,9 +116,25 @@ button {
     }
 }
 
+.subCat-selected {
+    .subCat-container div {
+        border: 1px solid $border-grey;
+        background: transparent;
+    }
+}
+
+.subCat-cancel {
+    .subCat-container div {
+        border: 1px solid $border-grey;
+        background: transparent;
+    }
+}
+
+
 .subCat-line {
     @extend %mt-20-wd-1200;
     border-bottom: 1px solid $border-grey;
+
     hr {
         border: 1px solid $border-grey;
     }

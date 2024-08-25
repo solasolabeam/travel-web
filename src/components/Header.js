@@ -35,12 +35,6 @@ export default function Header() {
         <div style={{ textAlign: 'right' }} ><span>로그인</span></div>
       </div>
 
-      <div className='header-bg'>
-        <div>
-          {/* <img src={mainImg1} /> */}
-        </div>
-      </div>
-
       <div className='category-container'>
         <ul>
           {
@@ -54,9 +48,17 @@ export default function Header() {
             })
           }
         </ul>
-        <p>🏆 인기 여행지 추천</p>
+        {/* <p>🏆 인기 여행지 추천</p> */}
 
       </div>
+
+      <div className='header-bg'>
+        <div>
+          {/* <img src={mainImg1} /> */}
+        </div>
+      </div>
+
+
     </>
   )
 };

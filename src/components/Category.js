@@ -41,7 +41,7 @@ export default function Category() {
                 {
                     subCat.map((v, i) => {
                         return (
-                            <div><p>{v.name}</p></div>
+                            <div tabIndex='0'><p>{v.name}</p></div>
                         )
                     })
 
