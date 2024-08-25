@@ -1,22 +1,14 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { changeCat1CVal, changeCat2CVal, changeCat3CVal, changeContentTypeVal, changeHeaderSearch, changeRow } from "../store/store";
-import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { key } from "../api/key";
 
 export default function Category() {
-    const [cat1, setCat1] = useState([]);
-    const [cat2, setCat2] = useState([]);
-    const [cat3, setCat3] = useState([]);
+    const [subCat, setSubCat] = useState([]);
 
-    let contentType = useSelector(state => state.contentType)
     let contentTypeVal = useSelector(state => state.contentTypeVal)
     let cat1Val = useSelector(state => state.cat1Val)
     let cat2Val = useSelector(state => state.cat2Val)
     let cat3Val = useSelector(state => state.cat3Val)
-
-    let navigate = useNavigate()
-    let dispatch = useDispatch()
 
     useEffect(() => {
         async function tourAPI() {
@@ -37,7 +29,7 @@ export default function Category() {
 
             let response = await fetch(requrl)
             let data = await response.json()
-            setCat1([...data.response.body.items.item])
+            setSubCat([...data.response.body.items.item])
         }
 
         tourAPI()
@@ -47,14 +39,15 @@ export default function Category() {
         <>
             <div className="subCat-container">
                 {
-                    cat1.map((v, i) => {
+                    subCat.map((v, i) => {
                         return (
-                            <div>{v.name}</div>
+                            <div><p>{v.name}</p></div>
                         )
                     })
 
                 }
             </div>
+            <div className="subCat-line"></div>
         </>
     )
 

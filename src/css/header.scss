@@ -64,7 +64,6 @@ button {
     }
 
     ul {
-        // border-top: 1px solid $border-grey;
         border-bottom: 1px solid $border-grey;
         list-style: none;
         display: flex;
@@ -87,12 +86,28 @@ button {
 .subCat-container {
     @extend %mt-20-wd-1200;
     display: flex;
+    flex-wrap: wrap;
     gap: 15px;
 
     div {
         border: 1px solid $border-grey;
         border-radius: 50px;
-        padding: 15px;
+        padding: 7px;
+        
+
+        p {
+            margin: 0px;
+            padding: 0 15px;
+            cursor: pointer;
+        }
+    }
+}
+
+.subCat-line {
+    @extend %mt-20-wd-1200;
+    border-bottom: 1px solid $border-grey;
+    hr {
+        border: 1px solid $border-grey;
     }
 }
 
@@ -114,7 +129,6 @@ button {
         position: relative;
 
         input {
-
             padding: 10px;
             margin-left: auto;
             width: 400px;
@@ -128,9 +142,11 @@ button {
             }
 
         }
-        .search-icon{
+
+        .search-icon {
             position: absolute;
-            top: 10px;;
+            top: 10px;
+            ;
             right: 15px;
             cursor: pointer;
         }
@@ -154,7 +170,7 @@ button {
 
         &:hover {
             // border: 3px solid rgba(0, 0, 0, 0.56);
-            
+
         }
 
         .card-area {
@@ -193,9 +209,11 @@ button {
     }
 
 }
+
 .none {
     display: none;
 }
+
 .card-btn {
     @extend %mt-20-wd-1200;
     text-align: center;
@@ -210,6 +228,7 @@ button {
         cursor: pointer;
         color: #8a8a8a;
         font-family: "Noto Serif KR", serif;
+
         &:active {
             background-color: #c9c8c8
         }
@@ -222,6 +241,7 @@ button {
     justify-content: center;
     align-items: center;
     height: 800px;
+
     p {
         font-size: 50px;
     }

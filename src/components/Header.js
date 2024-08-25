@@ -20,7 +20,7 @@ export default function Header() {
     } else if (code == 15) {  //축제/공연
       dispatch(changeCat1CVal('A02'))
       dispatch(changeCat2CVal('A0208'))
-    } else if (code == 32) {
+    } else if (code == 32) {  //숙박
       dispatch(changeCat1CVal('B02'))
       dispatch(changeCat2CVal('B0201'))
     }
@@ -47,9 +47,7 @@ export default function Header() {
             contentType.map((v, i) => {
               return (
                 <li key={v.code} onClick={() => {
-                  console.log('v.code', v.code)
                   getSubCat(v.code)
-
                   navigate(v.url)
                 }} >{v.name}</li>
               )

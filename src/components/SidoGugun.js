@@ -27,7 +27,7 @@ export default function SidoGugun() {
 
     useEffect(() => {
         activeSearch()
-    }, [addRow])
+    }, [addRow, contentTypeVal])
 
     function sidoChange(e) {
         var url = 'http://apis.data.go.kr/B551011/KorService1/areaCode1';

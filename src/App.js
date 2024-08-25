@@ -31,9 +31,9 @@ function App() {
 
   return (
     <>
-      
+
       <Header />
-      
+
       <Routes>
         <Route path='/' element={
           <>
@@ -42,20 +42,18 @@ function App() {
         } />
 
         <Route path='/*' element={<div>없는페이지</div>} />
-
         {
-          getContentType.map((v, i)=> {
+          getContentType.map((v, i) => {
             return (
               <Route path={v.url} element={
                 <>
-                <Category />
-                <SidoGugun />
+                  <Category />
+                  <SidoGugun />
                 </>
-              }/>
+              } />
             )
           })
         }
-
       </Routes>
 
       <Footer />
