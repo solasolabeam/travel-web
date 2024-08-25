@@ -33,11 +33,10 @@ function App() {
     <>
       
       <Header />
-      <Category />
+      
       <Routes>
         <Route path='/' element={
           <>
-            
             <RecommendPart />
           </>
         } />
@@ -49,6 +48,7 @@ function App() {
             return (
               <Route path={v.url} element={
                 <>
+                <Category />
                 <SidoGugun />
                 </>
               }/>
