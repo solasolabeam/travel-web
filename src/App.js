@@ -6,7 +6,6 @@ import './css/header.scss';
 
 //Components 호출
 import Header from './components/Header';
-import Category from './components/Category';
 import SidoGugun from './components/SidoGugun';
 import RecommendPart from './components/RecommendPart';
 import Footer from './components/Footer';
@@ -47,7 +46,6 @@ function App() {
             return (
               <Route path={v.url} element={
                 <>
-                  <Category />
                   <SidoGugun />
                 </>
               } />

@@ -3,6 +3,7 @@ import { changeGugun, changeGugunVal, changeHeaderSearch, changeKeyword, changeS
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
+import { key } from "../api/key";
 
 //Font Awesome
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
@@ -25,9 +26,39 @@ export default function SidoGugun() {
     let headerSearch = useSelector(state => state.headerSearch)
     let addRow = useSelector(state => state.addRow);
 
+
+    const [subCat, setSubCat] = useState([]);
+
+
     useEffect(() => {
         activeSearch()
     }, [addRow, contentTypeVal])
+
+
+    useEffect(() => {
+        async function tourAPI() {
+            var url = 'https://apis.data.go.kr/B551011/KorService1/categoryCode1';
+            var params = {
+                serviceKey: key,
+                numOfRows: '10',
+                pageNo: '1',
+                MobileOS: 'ETC',
+                MobileApp: 'AppTest',
+                contentTypeId: contentTypeVal,
+                cat1: cat1Val,
+                cat2: cat2Val,
+                cat3: cat3Val,
+            };
+            const queryString = new URLSearchParams(params).toString();  // url에 쓰기 적합한 querySting으로 return 해준다. 
+            const requrl = `${url}?${queryString}&_type=json`;
+
+            let response = await fetch(requrl)
+            let data = await response.json()
+            setSubCat([...data.response.body.items.item])
+        }
+
+        tourAPI()
+    }, [contentTypeVal])
 
     function sidoChange(e) {
         var url = 'http://apis.data.go.kr/B551011/KorService1/areaCode1';
@@ -159,6 +190,20 @@ export default function SidoGugun() {
                     <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" onClick={() => { addRow == 1 ? activeSearch() : dispatch(changeRow(1)) }} />
                 </div>
             </div>
+
+            {/* SubCat Parts */}
+            <div className="subCat-line"></div>
+            <div className="subCat-container">
+                {
+                    subCat.map((v, i) => {
+                        return (
+                            <div tabIndex='0'><p>{v.name}</p></div>
+                        )
+                    })
+
+                }
+            </div>
+            
             {/* Cart Parts */}
             {
                 headerSearch.length != 0 ?
