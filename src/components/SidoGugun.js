@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { changeGugun, changeGugunVal, changeHeaderSearch, changeKeyword, changeSidoVal } from '../store/store';
+import { changeCat3CVal, changeGugun, changeGugunVal, changeHeaderSearch, changeKeyword, changeSidoVal } from '../store/store';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
@@ -32,7 +32,7 @@ export default function SidoGugun() {
 
     useEffect(() => {
         activeSearch()
-    }, [addRow, contentTypeVal])
+    }, [addRow, contentTypeVal, cat3Val])
 
 
     useEffect(() => {
@@ -161,6 +161,9 @@ export default function SidoGugun() {
         dispatch(changeRow(addRow + 1))
     }
 
+    function subCatClick(value) {
+        dispatch(changeCat3CVal(value))
+    }
     return (
         <>
             {/* SIdo Parts */}
@@ -197,13 +200,13 @@ export default function SidoGugun() {
                 {
                     subCat.map((v, i) => {
                         return (
-                            <div tabIndex='0'><p>{v.name}</p></div>
+                            <div tabIndex='0' key={v.code} onClick={() => subCatClick(v.code)}><p>{v.name}</p></div>
                         )
                     })
 
                 }
             </div>
-            
+
             {/* Cart Parts */}
             {
                 headerSearch.length != 0 ?
@@ -213,7 +216,7 @@ export default function SidoGugun() {
                         <p>"검색 결과가 존재하지 않습니다"</p>
                     </div>
             }
-            
+
             <div className="card-btn">
                 <button className={`${headerSearch.length == 0 && 'none'}`} onClick={() => { getRow() }}>더보기</button>
             </div>

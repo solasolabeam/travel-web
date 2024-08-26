@@ -25,7 +25,6 @@ function App() {
 
   useEffect(() => {
     getSido().then((data) => dispatch(changeSido(data.response.body.items.item)))
-    // getHeaderSearch().then((data) => dispatch(changeHeaderSearch(data.response.body.items.item)))
   }, []);
 
   return (
@@ -44,7 +43,7 @@ function App() {
         {
           getContentType.map((v, i) => {
             return (
-              <Route path={v.url} element={
+              <Route path={v.url} key={v.code} element={
                 <>
                   <SidoGugun />
                 </>
