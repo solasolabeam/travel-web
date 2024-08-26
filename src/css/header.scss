@@ -76,8 +76,10 @@ ul {
         padding: 15px;
         padding-left: 0;
         gap: 70px;
+
         li {
             cursor: pointer;
+
             &:hover {
                 text-decoration: underline;
             }
@@ -100,33 +102,18 @@ ul {
         padding: 7px;
         cursor: pointer;
 
-
-        &:focus {
-            background: rgb(227, 255, 227);
-            border: 1px solid rgb(71, 139, 71);
-        }
-
         p {
             margin: 0px;
             padding: 0 15px;
         }
     }
-}
 
-.subCat-selected {
-    .subCat-container div {
-        border: 1px solid $border-grey;
-        background: transparent;
+    .subCat-selected {
+        background: rgb(244, 255, 240);
+        border: 1px solid rgb(71, 139, 71);
+
     }
 }
-
-.subCat-cancel {
-    .subCat-container div {
-        border: 1px solid $border-grey;
-        background: transparent;
-    }
-}
-
 
 .subCat-line {
     @extend %mt-20-wd-1200;

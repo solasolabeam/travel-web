@@ -161,9 +161,7 @@ export default function SidoGugun() {
         dispatch(changeRow(addRow + 1))
     }
 
-    function subCatClick(value) {
-        dispatch(changeCat3CVal(value))
-    }
+
     return (
         <>
             {/* SIdo Parts */}
@@ -200,7 +198,7 @@ export default function SidoGugun() {
                 {
                     subCat.map((v, i) => {
                         return (
-                            <div tabIndex='0' key={v.code} onClick={() => subCatClick(v.code)}><p>{v.name}</p></div>
+                            <SubCat v={v}/>
                         )
                     })
 
@@ -245,4 +243,20 @@ function Card(props) {
             }
         </div>
     )
+}
+
+function SubCat({v}) {
+    let dispatch = useDispatch()
+
+    const [isClicked, setIsClicked] = useState(false)
+
+    function subCatClick(value) {
+        setIsClicked(!isClicked)
+        dispatch(changeCat3CVal(value))
+    }
+
+    return (
+        <div className={`${isClicked ? 'subCat-selected' : ''}`} key={v.code} onClick={() => subCatClick(v.code)}><p>{v.name}</p></div>
+    )
+    
 }
