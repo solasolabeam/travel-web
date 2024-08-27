@@ -16,17 +16,17 @@
         animation: slider 7.5s infinite linear;
     
         &:nth-child(1) {
-            background-image: url(../img/slide01.jpg);
+            background-image: url(../img/geumgang.png);
             animation-delay: 0;
         }
     
         &:nth-child(2) {
-            background-image: url(../img/slide02.jpg);
+            background-image: url(../img/jilisan.png);
             animation-delay: 2.5s;
         }
     
         &:nth-child(3) {
-            background-image: url(../img/slide03.jpg);
+            background-image: url(../img/seol-ag.png);
             animation-delay: 5s;
         }
     }
