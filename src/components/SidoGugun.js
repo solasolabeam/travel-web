@@ -4,11 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { key } from "../api/key";
+import getSido from '../api/sido';
 
 //Font Awesome
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import noIMG from '../img/No_Image_Available.jpg';
-import { changeRow } from "../store/store";
+import { changeRow, changeSido } from "../store/store";
 
 export default function SidoGugun() {
     let dispatch = useDispatch()
@@ -29,6 +30,9 @@ export default function SidoGugun() {
 
     const [subCat, setSubCat] = useState([]);
 
+    useEffect(() => {
+        getSido().then((data) => dispatch(changeSido(data.response.body.items.item)))
+      }, []);
 
     useEffect(() => {
         activeSearch()
