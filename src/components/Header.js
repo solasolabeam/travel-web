@@ -36,7 +36,7 @@ export default function Header() {
     <>
       <div className='header-container'>
         <div>
-          <span style={{ cursor: 'pointer' }} onClick={() => navigate('/')}>TITLE</span>
+          <span style={{ cursor: 'pointer' }} onClick={() => navigate('/')}>구석구석</span>
         </div>
         <div style={{ textAlign: 'right' }} ><span>로그인</span></div>
       </div>
