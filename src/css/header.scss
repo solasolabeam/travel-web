@@ -73,19 +73,15 @@ ul {
         margin: 0;
         list-style: none;
         display: flex;
-        padding: 15px;
-        padding-left: 0;
+        padding: 0;
         gap: 70px;
-
+        
         li {
+            height: 30px;
+            // border-bottom: 2px solid black;
             cursor: pointer;
-
-            &:hover {
-                text-decoration: underline;
-            }
         }
     }
-
 }
 
 .subCat-container {
@@ -128,7 +124,6 @@ ul {
     @extend %mt-20-wd-1200;
     margin: 40px auto;
     display: flex;
-    // justify-content: space-between;
 
     select {
         padding: 15px;
@@ -183,11 +178,6 @@ ul {
         border-radius: 20px;
         box-shadow: 0px 0px 10px #c9c8c8;
         cursor: pointer;
-
-        &:hover {
-            // border: 3px solid rgba(0, 0, 0, 0.56);
-
-        }
 
         .card-area {
             width: 100%;

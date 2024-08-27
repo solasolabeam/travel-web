@@ -246,12 +246,20 @@ function Card(props) {
 }
 
 function SubCat({v}) {
+    
     let dispatch = useDispatch()
+    let cat3Val = useSelector(state => state.cat3Val)
 
     const [isClicked, setIsClicked] = useState(false)
+    useEffect(()=>{
+        setIsClicked(false)
+    },[cat3Val])
 
     function subCatClick(value) {
-        setIsClicked(!isClicked)
+        setTimeout(() => {
+            setIsClicked(!isClicked)
+        }, 100);
+        
         dispatch(changeCat3CVal(value))
     }
 
