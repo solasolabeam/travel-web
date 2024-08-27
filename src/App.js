@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 
 import './css/header.scss';
+import './css/slide.scss';
 
 //Components 호출
 import Header from './components/Header';
