@@ -1,7 +1,11 @@
 @use 'reset';
-@import url('https://fonts.googleapis.com/css2?family=Marmelad&family=Noto+Serif+KR&family=Sankofa+Display&display=swap');
 
-$border-grey : #e4e3e3;
+@font-face {
+    font-family: 'yangjin';
+    src: url(../font/yangjin.otf);
+}
+
+$border-grey : #979797;
 
 
 html {
@@ -14,17 +18,10 @@ html {
 
 body {
     margin: 0;
-    font-family: "Noto Serif KR", serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
 }
 
-div,
-input,
-select,
-button,
-ul {
+* {
+    font-family: 'yangjin';
     box-sizing: border-box;
 }
 
@@ -220,7 +217,6 @@ ul {
         background-color: transparent;
         cursor: pointer;
         color: #8a8a8a;
-        font-family: "Noto Serif KR", serif;
 
         &:active {
             background-color: #c9c8c8
