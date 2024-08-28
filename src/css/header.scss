@@ -352,8 +352,18 @@ ul {
         }
     }
     .detail-map {
-        margin-top: 100px;
+        margin: 100px 0;
         border-radius: 50px;
+    }
+    .detail-info {
+        background: #fdfbfb;
+        padding: 30px;
+        letter-spacing: 2px;
+        border-radius: 15px;
+        p {
+            margin: 0;
+            font-size: 20px;
+        }
     }
 }
 
