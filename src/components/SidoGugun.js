@@ -235,7 +235,7 @@ function Card(props) {
                 props.headerSearch.map((v, i) => {
                     return (
                         <div className='card-layout' key={i} onClick={()=> {
-                            navigate(`${location.pathname}/detail/${v.cat3}`, {
+                            navigate(`${location.pathname}/detail/${v.contentid}`, {
                                 state: v
                             })
                         }}>
