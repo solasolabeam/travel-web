@@ -5,6 +5,21 @@
     src: url(../font/yangjin.otf);
 }
 
+@font-face {
+    font-family: 'GmarketSansBold';
+    src: url(../font/GmarketSansBold.otf);
+}
+
+@font-face {
+    font-family: 'GmarketSansLight';
+    src: url(../font/GmarketSansLight.otf);
+}
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url(../font/GmarketSansMedium.otf);
+}
+
 $border-grey : #979797;
 
 
@@ -21,7 +36,7 @@ body {
 }
 
 * {
-    font-family: 'yangjin';
+    font-family: 'GmarketSansBold';
     box-sizing: border-box;
 }
 
@@ -59,7 +74,7 @@ body {
         display: flex;
         padding: 0;
         gap: 70px;
-        
+
         li {
             height: 30px;
             // border-bottom: 2px solid black;
@@ -76,14 +91,19 @@ body {
     gap: 15px;
 
     div {
-        border: 1px solid $border-grey;
+        border: 1px solid rgb(49, 49, 49);
         background: transparent;
         border-radius: 50px;
         padding: 7px;
         cursor: pointer;
 
+        &:hover {
+            background: rgb(244, 255, 240);
+            border: 1px solid rgb(71, 139, 71);
+        }
+
         p {
-            margin: 0px;
+            margin: 5px 0 0 0;
             padding: 0 15px;
         }
     }
@@ -140,7 +160,7 @@ body {
 
         .search-icon {
             position: absolute;
-            top: 15px;
+            top: 20px;
             ;
             right: 15px;
             cursor: pointer;
@@ -194,6 +214,7 @@ body {
 
             .card-addr {
                 @include card-item(15px, 40px);
+                font-family: 'GmarketSansLight';
             }
         }
     }
@@ -276,6 +297,7 @@ body {
         display: flex;
         align-items: flex-end;
         gap: 20px;
+
         div {
             &:nth-child(1) {
                 font-size: 30px;
@@ -287,29 +309,43 @@ body {
                 gap: 10px;
                 list-style: none;
                 gap: 40px;
+
+                li {
+                    font-family: 'GmarketSansLight';
+                }
             }
         }
 
     }
+
     .footer-bottom {
         max-width: 1200px;
         margin: auto;
         margin-top: 10px;
+
+        p {
+            font-family: 'GmarketSansLight';
+        }
+
     }
 }
 
 .detail-container {
     @extend %mt-20-wd-1200;
+
     .detail-content {
         margin: 40px 0;
         text-align: center;
+
         p {
             font-size: 50px;
         }
+
         hr {
             border: 1px solid black;
         }
     }
+
     .detail-title {
         .detail-title-top {
             .tag {
@@ -320,46 +356,83 @@ body {
                 justify-content: center;
                 align-items: center;
                 background-color: rgb(149, 189, 138);
+
                 p {
                     color: rgb(255, 255, 255);
                 }
             }
+
             .title {
                 p {
-                    margin: 0;
+                    margin: 20px 0 0 0;
                     font-size: 40px;
                 }
+
                 hr {
                     margin: 40px 0;
                 }
             }
         }
     }
+
     .detail-img {
         width: 100%;
         height: 700px;
+
         img {
             width: 100%;
             height: 100%;
         }
-
-        hr {
-            margin: 40px 0;
-        }
     }
+
     .detail-map {
         margin: 100px 0;
         border-radius: 50px;
     }
+
     .detail-info {
-        background: #fdfbfb;
-        padding: 30px;
-        letter-spacing: 2px;
-        border-radius: 15px;
         p {
             margin: 0;
-            font-size: 20px;
         }
+        
+        letter-spacing: 2.5px;
+        border-radius: 15px;
+
+        > div:nth-child(1) {
+            margin: 80px 0;
+            p {
+                font-family: 'GmarketSansLight';
+                line-height: 45px;
+                font-size: 25px;
+            }
+        }
+        > div:nth-child(2) {
+            .botton-info {
+                font-size: 50px;
+                margin: 30px 0;
+            }
+            div {
+                margin-bottom: 20px;
+                span {
+                    margin-right: 30px;
+                    font-family: 'GmarketSansLight';
+                    font-size: 20px;
+                    padding: 15px;
+                    display: inline-block;
+                }
+                .tag {
+                    border: 1px solid rgb(196, 194, 194);
+                    background: #c29797;
+                    color: #ffffff;
+                    border-radius: 5px;
+                    font-family: 'GmarketSansBold';
+                    width: 300px;
+                    text-align: center;
+                }
+            }
+        }
+
+       
     }
 }
 

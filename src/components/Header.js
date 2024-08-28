@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { changeCat1CVal, changeCat2CVal, changeCat3CVal, changeContentTypeVal, changeGugun, changeGugunVal, changeKeyword, changeSido, changeSidoVal } from "../store/store";
+import { changeCat1CVal, changeCat2CVal, changeCat3CVal, changeContentTypeVal, changeGugun, changeGugunVal, changeKeyword, changeRow, changeSido, changeSidoVal } from "../store/store";
 import Slide from "./Slide";
 
 
@@ -16,6 +16,7 @@ export default function Header() {
     dispatch(changeGugunVal(''))
     dispatch(changeCat3CVal(''))
     dispatch(changeKeyword(''))
+    dispatch(changeRow(1))
 
     if (code == 12) {     //관광지
       dispatch(changeCat1CVal('A01'))
