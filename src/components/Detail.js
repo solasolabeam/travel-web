@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import noIMG from '../img/No_Image_Available.jpg';
-import { Map, MapMarker, MarkerClusterer } from "react-kakao-maps-sdk";
+import { Map, MapMarker } from "react-kakao-maps-sdk";
 
 export default function Detail() {
     let location = useLocation()
@@ -28,29 +28,21 @@ export default function Detail() {
             <div className="detail-img">
                 {
                     detailData.firstimage == '' ?
-                    <img src={noIMG} />
-                    :
-                    <img src={detailData.firstimage} />
+                        <img src={noIMG} />
+                        :
+                        <img src={detailData.firstimage} />
                 }
                 <hr />
             </div>
-            <Map
-      center={{ lat: 36.2683, lng: 127.6358 }}
-      style={{ width: "100%", height: "360px" }}
-      level={14}
-    >
-      <MarkerClusterer
-        averageCenter={true}
-        minLevel={10}
-      >
-        {clusterPositionsData.positions.map((pos) => (
-          <MapMarker
-            key={`${pos.lat}-${pos.lng}`}
-            position={pos}
-          />
-        ))}
-      </MarkerClusterer>
-    </Map>
+            <div className="detail-map">
+                <Map
+                    center={{ lat: detailData.mapy, lng: detailData.mapx }}
+                    style={{ width: "100%", height: "500px" }}
+                >
+                    <MapMarker position={{ lat: detailData.mapy, lng: detailData.mapx }}></MapMarker>
+                </Map>
+            </div>
+
         </div>
     )
 }
