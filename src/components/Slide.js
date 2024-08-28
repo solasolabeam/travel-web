@@ -1,9 +1,9 @@
 export default function Slide() {
     return (
-        <div class="slider">
-            <div class="slide"></div>
-            <div class="slide"></div>
-            <div class="slide"></div>
+        <div className="slider">
+            <div className="slide"></div>
+            <div className="slide"></div>
+            <div className="slide"></div>
         </div>
     )
 }

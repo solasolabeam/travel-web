@@ -58,12 +58,10 @@ export default function Header() {
 
       </div>
 
-      {/* <div className='header-bg'>
-        <div>
-          <img src={mainImg1} />
-        </div>
-      </div> */}
-      <Slide />
+      <div className='header-bg'>
+        <Slide />
+      </div>
+      
 
 
     </>

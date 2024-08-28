@@ -1,7 +1,7 @@
 @use 'reset';
 @import url('https://fonts.googleapis.com/css2?family=Marmelad&family=Noto+Serif+KR&family=Sankofa+Display&display=swap');
 
-$border-grey : #d1d1d1;
+$border-grey : #e4e3e3;
 
 
 html {
@@ -49,20 +49,7 @@ ul {
 
 .header-bg {
     width: 100%;
-    background: #eee;
-    // height: 500px;
-    display: flex;
-    justify-content: center;
-
-    div {
-        width: 600px;
-        height: 450px;
-
-        img {
-            width: 100%;
-            height: 100%;
-        }
-    }
+    background: $border-grey;
 }
 
 .category-container {
@@ -312,6 +299,20 @@ ul {
         max-width: 1200px;
         margin: auto;
         margin-top: 10px;
+    }
+}
+
+.detail-container {
+    @extend %mt-20-wd-1200;
+    .detail-title {
+        margin: 30px 0;
+        text-align: center;
+        p {
+            font-size: 50px;
+        }
+        hr {
+            border: 1px solid black;
+        }
     }
 }
 
