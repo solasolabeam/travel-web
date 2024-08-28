@@ -9,11 +9,12 @@ export default function Detail() {
     let detailData = location.state
     console.log('detailData', detailData)
 
-    const [detail, setDetail] = useState([])
+    const [common, setCommon] = useState([])
+    const [intro, setIntro] = useState([])
 
     useEffect(() => {
 
-        //관광정보의 “기본정보" 조회
+        // 관광정보의 “기본정보" 조회
         async function detailCommon() {
             var url = 'https://apis.data.go.kr/B551011/KorService1/detailCommon1';
             var params = {
@@ -32,9 +33,31 @@ export default function Detail() {
 
             const res = await fetch(requrl)
             const data = await res.json();
-            setDetail([...data.response.body.items.item])
+            setCommon([...data.response.body.items.item])
         }
+        // 소개정보조회
+        async function detailIntro() {
+            var url = 'https://apis.data.go.kr/B551011/KorService1/detailIntro1';
+            var params = {
+                serviceKey: key,
+                numOfRows: '10',
+                pageNo: '1',
+                MobileOS: 'ETC',
+                MobileApp: 'AppTest',
+                contentId: detailData.contentid,
+                contentTypeId: detailData.contenttypeid,
+            };
+
+            const queryString = new URLSearchParams(params).toString();  // url에 쓰기 적합한 querySting으로 return 해준다. 
+            const requrl = `${url}?${queryString}&_type=json`;
+
+            const res = await fetch(requrl)
+            const data = await res.json();
+            setIntro([...data.response.body.items.item])
+        }
+        
         detailCommon()
+        detailIntro()
     }, [])
 
     return (
@@ -65,17 +88,17 @@ export default function Detail() {
                 }
                 <hr />
             </div>
-            <div className="detail-map" onClick={()=>console.log(detail)}>
+            <div className="detail-map" onClick={()=>console.log(intro)}>
                 <Map
                     center={{ lat: detailData.mapy, lng: detailData.mapx }}
-                    style={{ width: "100%", height: "500px" }}
+                    style={{ width: "100%", height: "400px" }}
                 >
                     <MapMarker position={{ lat: detailData.mapy, lng: detailData.mapx }}></MapMarker>
                 </Map>
             </div>
             <div className="detail-info">
                 {
-                    detail.length != 0 &&<p dangerouslySetInnerHTML={{__html: detail[0].overview}}></p>
+                    common.length != 0 &&<p dangerouslySetInnerHTML={{__html: common[0].overview}}></p>
                 }
             </div>
         </div>
