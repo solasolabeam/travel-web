@@ -8,6 +8,7 @@ import Header from './components/Header';
 import SidoGugun from './components/SidoGugun';
 import RecommendPart from './components/RecommendPart';
 import Footer from './components/Footer';
+import Detail from './components/Detail';
 
 
 import { Route, Routes, useNavigate } from 'react-router-dom';
@@ -23,19 +24,10 @@ function App() {
             <RecommendPart />
           </>
         } />
+        {/* <Route path='/*' element={<div>없는페이지</div>} /> */}
+        {getContentType.map((v, i) => <Route path={v.url} key={v.code} element={<SidoGugun />} />)}
+        {getContentType.map((v, i) => <Route path={`${v.url}/detail/:id`} key={v.code} element={<Detail />} />)}
 
-        <Route path='/*' element={<div>없는페이지</div>} />
-        {
-          getContentType.map((v, i) => {
-            return (
-              <Route path={v.url} key={v.code} element={
-                <>
-                  <SidoGugun />
-                </>
-              } />
-            )
-          })
-        }
       </Routes>
       <Footer />
     </>

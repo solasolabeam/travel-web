@@ -10,9 +10,11 @@ import getSido from '../api/sido';
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import noIMG from '../img/No_Image_Available.jpg';
 import { changeRow, changeSido } from "../store/store";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function SidoGugun() {
     let dispatch = useDispatch()
+
     let sido = useSelector(state => state.sido)
     let sidoVal = useSelector(state => state.sidoVal)
     let gugun = useSelector(state => state.gugun)
@@ -32,13 +34,10 @@ export default function SidoGugun() {
 
     useEffect(() => {
         getSido().then((data) => dispatch(changeSido(data.response.body.items.item)))
-      }, []);
-
+    }, []);
     useEffect(() => {
         activeSearch()
     }, [addRow, contentTypeVal, cat3Val])
-
-
     useEffect(() => {
         async function tourAPI() {
             var url = 'https://apis.data.go.kr/B551011/KorService1/categoryCode1';
@@ -202,7 +201,7 @@ export default function SidoGugun() {
                 {
                     subCat.map((v, i) => {
                         return (
-                            <SubCat v={v}/>
+                            <SubCat v={v} key={v.code}/>
                         )
                     })
 
@@ -220,19 +219,26 @@ export default function SidoGugun() {
             }
 
             <div className="card-btn">
-                <button className={`${headerSearch.length == 0 && 'none'}`} onClick={() => { getRow() }}>더보기</button>
+                <button className={`${(headerSearch.length == 0 || headerSearch.length % 6 != 0) && 'none'}`} onClick={() => { getRow() }}>더보기</button>
             </div>
         </>
     )
 }
 
 function Card(props) {
+    let navigate = useNavigate()
+    let location = useLocation()
+
     return (
         <div className='card-container' style={{ gridTemplateRows: `repeat(${props.addRow * 2},500px)` }}>
             {
                 props.headerSearch.map((v, i) => {
                     return (
-                        <div className='card-layout'>
+                        <div className='card-layout' key={i} onClick={()=> {
+                            navigate(`${location.pathname}/detail/${v.cat3}`, {
+                                state: v
+                            })
+                        }}>
                             <div className='card-area'>
                                 {v.firstimage == '' ? <img src={noIMG} /> : <img src={v.firstimage} />}
                             </div>
@@ -249,26 +255,26 @@ function Card(props) {
     )
 }
 
-function SubCat({v}) {
-    
+function SubCat({ v }) {
+
     let dispatch = useDispatch()
     let cat3Val = useSelector(state => state.cat3Val)
 
     const [isClicked, setIsClicked] = useState(false)
-    useEffect(()=>{
+    useEffect(() => {
         setIsClicked(false)
-    },[cat3Val])
+    }, [cat3Val])
 
     function subCatClick(value) {
         setTimeout(() => {
             setIsClicked(!isClicked)
         }, 100);
-        
+
         dispatch(changeCat3CVal(value))
     }
 
     return (
         <div className={`${isClicked ? 'subCat-selected' : ''}`} key={v.code} onClick={() => subCatClick(v.code)}><p>{v.name}</p></div>
     )
-    
+
 }
