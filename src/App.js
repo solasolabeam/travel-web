@@ -2,6 +2,7 @@
 
 import './css/header.scss';
 import './css/slide.scss';
+import getSido from './api/sido';
 
 //Components 호출
 import Header from './components/Header';
@@ -10,11 +11,23 @@ import RecommendPart from './components/RecommendPart';
 import Footer from './components/Footer';
 import Detail from './components/Detail';
 
-
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import getContentType from './api/contentType';
+import { useEffect } from 'react';
+import { changeSido } from './store/store';
+import { useDispatch } from 'react-redux';
+
+
+
+
 
 function App() {
+  let dispatch = useDispatch()
+
+  useEffect(()=> {
+    getSido().then((data) => dispatch(changeSido(data.response.body.items.item)))
+  })
+
   return (
     <>
       <Header />

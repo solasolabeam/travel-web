@@ -1,11 +1,13 @@
 import { useLocation } from "react-router-dom";
 import noIMG from '../img/No_Image_Available.jpg';
 import { Map, MapMarker } from "react-kakao-maps-sdk";
-import { key } from "../api/key";
 import { useEffect, useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+
+import { key } from "../api/key";
+import getCat1 from "../api/cat1";
 
 export default function Detail() {
     let location = useLocation()
@@ -65,13 +67,13 @@ export default function Detail() {
     return (
         <div className="detail-container">
             <div className="detail-content">
-                <p>{detailData.cat1}</p>
+                <p>{detailData.contentName}</p>
                 <hr />
             </div>
             <div className="detail-title">
                 <div className="detail-title-top">
                     <div className="tag">
-                        <p>{detailData.areacode}</p>
+                        <p>{detailData.cat1Name}</p>
                     </div>
                     <div className="title">
                         <p>{detailData.title}</p>

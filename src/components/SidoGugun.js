@@ -10,6 +10,7 @@ import { faLocationDot, faMagnifyingGlass } from "@fortawesome/free-solid-svg-ic
 import noIMG from '../img/No_Image_Available.jpg';
 import { changeRow, changeSido } from "../store/store";
 import { useLocation, useNavigate } from "react-router-dom";
+import getCat1 from "../api/cat1";
 
 export default function SidoGugun() {
     let dispatch = useDispatch()
@@ -19,6 +20,7 @@ export default function SidoGugun() {
     let gugun = useSelector(state => state.gugun)
     let gugunVal = useSelector(state => state.gugunVal)
     let keyword = useSelector(state => state.keyword)
+    let contentType = useSelector(state => state.contentType)
 
     let contentTypeVal = useSelector(state => state.contentTypeVal)
     let cat1Val = useSelector(state => state.cat1Val)
@@ -30,9 +32,10 @@ export default function SidoGugun() {
 
 
     const [subCat, setSubCat] = useState([]);
+    const [allCat1, setAllCat1] = useState([]);
 
     useEffect(() => {
-        getSido().then((data) => dispatch(changeSido(data.response.body.items.item)))
+        getCat1().then((data) => setAllCat1([...data.response.body.items.item]))
     }, []);
     useEffect(() => {
         activeSearch()
@@ -93,7 +96,7 @@ export default function SidoGugun() {
             addRow == 1 ? activeSearch() : dispatch(changeRow(1))
         }
     }
-    function activeSearch() {
+    async function activeSearch() {
         if (keyword == '') {
             var url = 'https://apis.data.go.kr/B551011/KorService1/areaBasedList1';
             var key = 'WNBEfQ1MXM62Fv6qETObrCjjwWv7ji1iNrMTCVWwk6ET3BB8YmqPhT/uX6boztyIRyPzD40LtfLBGQTcimcXQA==';
@@ -115,15 +118,36 @@ export default function SidoGugun() {
 
             const queryString = new URLSearchParams(params).toString();  // url에 쓰기 적합한 querySting으로 return 해준다. 
             const requrl = `${url}?${queryString}&_type=json`;
-            fetch(requrl)
-                .then(response => response.json())
-                .then((data) => {
-                    if (data.response.body.items.length == 0) {
-                        dispatch(changeHeaderSearch([]))
-                    } else {
-                        dispatch(changeHeaderSearch([...data.response.body.items.item]))
-                    }
+
+            let res = await fetch(requrl)
+            let data = await res.json()
+
+            if (data.response.body.items.length == 0) {
+                dispatch(changeHeaderSearch([]))
+            } else {
+                 data = data.response.body.items.item
+                 let newData = data.map(value => {
+                    let contentName = '';
+                    let sidoName = '';
+                    
+                    // 콘텐츠 명 setting
+                    contentType.forEach(item => {
+                        if(value.contenttypeid == item.code) {
+                            contentName = item.name
+                        }
+                    })
+                    // 시/도 명 setting
+                    sido.forEach(item => {
+                        if(value.areacode == item.code) {
+                            sidoName = item.name
+                        }
+                    })
+
+                    return {...value, contentName: contentName, sidoName: sidoName}
                 })
+                dispatch(changeHeaderSearch([...newData]))
+            }
+
         } else {
             var url = 'https://apis.data.go.kr/B551011/KorService1/searchKeyword1';
             var key = 'WNBEfQ1MXM62Fv6qETObrCjjwWv7ji1iNrMTCVWwk6ET3BB8YmqPhT/uX6boztyIRyPzD40LtfLBGQTcimcXQA==';
@@ -147,15 +171,34 @@ export default function SidoGugun() {
             const queryString = new URLSearchParams(params).toString();  // url에 쓰기 적합한 querySting으로 return 해준다. 
             const requrl = `${url}?${queryString}&_type=json`;
 
-            fetch(requrl)
-                .then(response => response.json())
-                .then((data) => {
-                    if (data.response.body.items.length == 0) {
-                        dispatch(changeHeaderSearch([]))
-                    } else {
-                        dispatch(changeHeaderSearch([...data.response.body.items.item]))
-                    }
+            let res = await fetch(requrl)
+            let data = await res.json()
+
+            if (data.response.body.items.length == 0) {
+                dispatch(changeHeaderSearch([]))
+            } else {
+                 data = data.response.body.items.item
+                 data = data.map(value => {
+                    let contentName = '';
+                    let cat1Name = '';
+                    
+                    // 시/도 명 setting
+                    sido.forEach(item => {
+                        if(value.areacode == item.code) {
+                            contentName = item.name
+                        }
+                    })
+                    // 카테고리명 setting
+                    allCat1.forEach(item => {
+                        if(value.cat1 == item.code) {
+                            cat1Name = item.name
+                        }
+                    })
+
+                    return {...value, contentName: contentName, cat1Name: cat1Name}
                 })
+                dispatch(changeHeaderSearch([...data]))
+            }
         }
     }
 
@@ -200,7 +243,7 @@ export default function SidoGugun() {
                 {
                     subCat.map((v, i) => {
                         return (
-                            <SubCat v={v} key={v.code}/>
+                            <SubCat v={v} key={v.code} />
                         )
                     })
 
@@ -227,16 +270,12 @@ export default function SidoGugun() {
 function Card(props) {
     let navigate = useNavigate()
     let location = useLocation()
-
     return (
         <div className='card-container' style={{ gridTemplateRows: `repeat(${props.addRow * 2},500px)` }}>
             {
                 props.headerSearch.map((v, i) => {
-                    for(let i =0; i<5; i++){
-                        console.log('i', i)
-                    }
                     return (
-                        <div className='card-layout' key={i} onClick={()=> {
+                        <div className='card-layout' key={i} onClick={() => {
                             navigate(`${location.pathname}/detail/${v.contentid}`, {
                                 state: v
                             })
@@ -245,8 +284,8 @@ function Card(props) {
                                 {v.firstimage == '' ? <img src={noIMG} /> : <img src={v.firstimage} />}
                             </div>
                             <div className='card-area'>
-                                <p className='card-tag'>{v.cat1}</p>
-                                <p className='card-title'>[{v.areacode}] {v.title}</p>
+                                <p className='card-tag'>{v.contentName}</p>
+                                <p className='card-title'>[{v.sidoName}] {v.title}</p>
                                 <p className='card-addr'><FontAwesomeIcon icon={faLocationDot} /> {v.addr1}</p>
                             </div>
                         </div>

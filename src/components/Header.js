@@ -10,7 +10,6 @@ export default function Header() {
   let navigate = useNavigate()
 
   function getSubCat(code) {
-
     dispatch(changeContentTypeVal(code))
     dispatch(changeSidoVal(''))
     dispatch(changeGugunVal(''))
