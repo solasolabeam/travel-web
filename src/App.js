@@ -26,7 +26,7 @@ function App() {
 
   useEffect(()=> {
     getSido().then((data) => dispatch(changeSido(data.response.body.items.item)))
-  })
+  },[])
 
   return (
     <>
