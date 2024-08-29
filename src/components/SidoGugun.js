@@ -1,13 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { changeCat3CVal, changeGugun, changeGugunVal, changeHeaderSearch, changeKeyword, changeSidoVal } from '../store/store';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { key } from "../api/key";
 import getSido from '../api/sido';
 
 //Font Awesome
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLocationDot, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import noIMG from '../img/No_Image_Available.jpg';
 import { changeRow, changeSido } from "../store/store";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -233,6 +232,9 @@ function Card(props) {
         <div className='card-container' style={{ gridTemplateRows: `repeat(${props.addRow * 2},500px)` }}>
             {
                 props.headerSearch.map((v, i) => {
+                    for(let i =0; i<5; i++){
+                        console.log('i', i)
+                    }
                     return (
                         <div className='card-layout' key={i} onClick={()=> {
                             navigate(`${location.pathname}/detail/${v.contentid}`, {

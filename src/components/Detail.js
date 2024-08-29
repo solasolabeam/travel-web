@@ -4,6 +4,9 @@ import { Map, MapMarker } from "react-kakao-maps-sdk";
 import { key } from "../api/key";
 import { useEffect, useState } from "react";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+
 export default function Detail() {
     let location = useLocation()
     let detailData = location.state
@@ -72,6 +75,7 @@ export default function Detail() {
                     </div>
                     <div className="title">
                         <p>{detailData.title}</p>
+                        <p><FontAwesomeIcon icon={faLocationDot} />  {detailData.addr1}</p>
                         <hr />
                     </div>
 

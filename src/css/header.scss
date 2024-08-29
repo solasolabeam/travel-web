@@ -367,6 +367,12 @@ body {
                     margin: 20px 0 0 0;
                     font-size: 40px;
                 }
+                p:nth-child(2) {
+                    margin: 20px 0 0 0;
+                    font-size: 20px;
+                    // font-family: 'GmarketSansMedium';
+                    font-family: 'GmarketSansLight';
+                }
 
                 hr {
                     margin: 40px 0;
