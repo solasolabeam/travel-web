@@ -447,14 +447,14 @@ body {
                 }
 
                 .botton-info-area-tag {
-                    width: 20%;
+                    width: 27%;
                     background: #c29797;
                     color: white;
                     @extend %flex-center;
 
                     p {
                         margin: 0;
-                        padding: 10px 0;
+                        padding: 10px 10px;
                         font-size: 30px;
                     }
 
@@ -466,13 +466,13 @@ body {
 
                 .botton-info-area-content {
                     background: white;
-                    width: 78%;
+                    width: 71%;
                     word-break: break-all;
                     @extend %flex-center;
 
                     p {
-                        white-space: normal;
                         margin: 0;
+                        padding: 10px 10px;
                         font-family: 'GmarketSansLight';
                         font-size: 30px;
                     }
