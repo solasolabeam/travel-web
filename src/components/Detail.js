@@ -70,19 +70,15 @@ export default function Detail() {
                 <p>{detailData.contentName}</p>
                 <hr />
             </div>
-            <div className="detail-title">
-                <div className="detail-title-top">
-                    <div className="tag">
-                        <p>{detailData.sidoName}</p>
-                    </div>
-                    <div className="title">
-                        <p>{detailData.title}</p>
-                        <p><FontAwesomeIcon icon={faLocationDot} />  {detailData.addr1}</p>
-                        <hr />
-                    </div>
-
+            <div className="detail-tag">
+                <div>
+                    <p>{detailData.sidoName}</p>
                 </div>
-
+            </div>
+            <div className="detail-title">
+                <p>{detailData.title}</p>
+                <p><FontAwesomeIcon icon={faLocationDot} />  {detailData.addr1}</p>
+                <hr />
             </div>
             <div className="detail-img">
                 {
@@ -103,18 +99,18 @@ export default function Detail() {
                         <p className="botton-info">이용안내</p>
                     </div>
                     <div className="botton-info-area">
-                    {
-                        intro.map((v, i) => {
-                            return (
-                                <>
-                                    {v.contenttypeid == 12 && <Tour value={v} />}
-                                    {v.contenttypeid == 14 && <Culture value={v} />}
-                                    {v.contenttypeid == 15 && <Event value={v} />}
-                                    {v.contenttypeid == 32 && <Hotel value={v} />}
-                                </>
-                            )
-                        })
-                    }
+                        {
+                            intro.map((v, i) => {
+                                return (
+                                    <>
+                                        {v.contenttypeid == 12 && <Tour value={v} />}
+                                        {v.contenttypeid == 14 && <Culture value={v} />}
+                                        {v.contenttypeid == 15 && <Event value={v} />}
+                                        {v.contenttypeid == 32 && <Hotel value={v} />}
+                                    </>
+                                )
+                            })
+                        }
                     </div>
                 </div>
 
