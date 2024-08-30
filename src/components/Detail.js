@@ -100,22 +100,26 @@ export default function Detail() {
                     </div>
                 </div>
                 <div className="botton-info-area">
-                    <div className="botton-info-area-tag"><p>가나다라</p></div><div className="botton-info-area-content"><p>가나다라</p></div>
+                    <div className="botton-info-flex">
+                        <div className="botton-info-area-tag"><p>가나다라</p></div>
+                        <div className="botton-info-area-space"></div>
+                        <div className="botton-info-area-content"><p>1212312311</p></div>
 
-                    
-                    
-                    {/* {
+                        {
                             intro.map((v, i) => {
                                 return (
                                     <>
-                                        {v.contenttypeid == 12 && <Tour value={v} />}
-                                        {v.contenttypeid == 14 && <Culture value={v} />}
+                                        {/* {v.contenttypeid == 12 && <Tour value={v} />} */}
+                                        {/* {v.contenttypeid == 14 && <Culture value={v} />}
                                         {v.contenttypeid == 15 && <Event value={v} />}
-                                        {v.contenttypeid == 32 && <Hotel value={v} />}
+                                        {v.contenttypeid == 32 && <Hotel value={v} />} */}
                                     </>
                                 )
                             })
-                        } */}
+                        }
+                    </div>
+
+
                 </div>
             </div>
             <div className="detail-map">
@@ -133,67 +137,67 @@ export default function Detail() {
 function Tour({ value }) {
     return (
         <>
-            <div><span className="tag">수용인원</span><span dangerouslySetInnerHTML={{ __html: value.accomcount }}></span></div>
-            <div><span className="tag">유모차대여정보</span><span dangerouslySetInnerHTML={{ __html: value.chkbabycarriage }}></span></div>
-            <div><span className="tag">신용카드가능정보</span><span dangerouslySetInnerHTML={{ __html: value.chkcreditcard }}></span></div>
-            <div><span className="tag">애완동물동반가능정보</span><span dangerouslySetInnerHTML={{ __html: value.chkpet }}></span></div>
-            <div><span className="tag">체험가능연령</span><span dangerouslySetInnerHTML={{ __html: value.expagerange }}></span></div>
-            <div><span className="tag">체험안내</span><span dangerouslySetInnerHTML={{ __html: value.expguide }}></span></div>
-            <div><span className="tag">개장일</span><span dangerouslySetInnerHTML={{ __html: value.opendate }}></span></div>
-            <div><span className="tag">주차시설</span><span dangerouslySetInnerHTML={{ __html: value.parking }}></span></div>
-            <div><span className="tag">쉬는날</span><span dangerouslySetInnerHTML={{ __html: value.restdate }}></span></div>
-            <div><span className="tag">이용시기</span><span dangerouslySetInnerHTML={{ __html: value.useseason }}></span></div>
-            <div><span className="tag">이용시간</span><span dangerouslySetInnerHTML={{ __html: value.usetime }}></span></div>
+            <div className="botton-info-area-tag"><p>수용인원</p></div><div className="botton-info-area-content"><p dangerouslySetInnerHTML={{ __html: value.accomcount }}></p></div>
+            <div className="botton-info-area-tag"><p>유모차대여정보</p></div><div className="botton-info-area-content"><p dangerouslySetInnerHTML={{ __html: value.chkbabycarriage }}></p></div>
+            <div className="botton-info-area-tag"><p>신용카드가능정보</p></div><div className="botton-info-area-content"><p dangerouslySetInnerHTML={{ __html: value.chkcreditcard }}></p></div>
+            <div className="botton-info-area-tag"><p>애완동물동반가능정보</p></div><div className="botton-info-area-content"><p dangerouslySetInnerHTML={{ __html: value.chkpet }}></p></div>
+            <div className="botton-info-area-tag"><p>체험가능연령</p></div><div className="botton-info-area-content"><p dangerouslySetInnerHTML={{ __html: value.expagerange }}></p></div>
+            <div className="botton-info-area-tag"><p>체험안내</p></div><div className="botton-info-area-content"><p dangerouslySetInnerHTML={{ __html: value.expguide }}></p></div>
+            <div className="botton-info-area-tag"><p>개장일</p></div><div className="botton-info-area-content"><p dangerouslySetInnerHTML={{ __html: value.opendate }}></p></div>
+            <div className="botton-info-area-tag"><p>주차시설</p></div><div className="botton-info-area-content"><p dangerouslySetInnerHTML={{ __html: value.parking }}></p></div>
+            <div className="botton-info-area-tag"><p>쉬는날</p></div><div className="botton-info-area-content"><p dangerouslySetInnerHTML={{ __html: value.restdate }}></p></div>
+            <div className="botton-info-area-tag"><p>이용시기</p></div><div className="botton-info-area-content"><p dangerouslySetInnerHTML={{ __html: value.useseason }}></p></div>
+            <div className="botton-info-area-tag"><p>이용시간</p></div><div className="botton-info-area-content"><p dangerouslySetInnerHTML={{ __html: value.usetime }}></p></div>
         </>
     )
 }
 
-function Culture({ value }) {
-    return (
-        <>
-            <div><span className="tag">규모</span><span dangerouslySetInnerHTML={{ __html: value.scale }}></span></div>
-            <div><span className="tag">이용요금</span><span dangerouslySetInnerHTML={{ __html: value.usefee }}></span></div>
-            <div><span className="tag">문의및안내</span><span dangerouslySetInnerHTML={{ __html: value.infocenterculture }}></span></div>
-            <div><span className="tag">이용시간</span><span dangerouslySetInnerHTML={{ __html: value.usetimeculture }}></span></div>
-            <div><span className="tag">쉬는날</span><span dangerouslySetInnerHTML={{ __html: value.restdateculture }}></span></div>
-            <div><span className="tag">주차시설</span><span dangerouslySetInnerHTML={{ __html: value.parkingculture }}></span></div>
-            <div><span className="tag">신용카드가능정보</span><span dangerouslySetInnerHTML={{ __html: value.chkcreditcardculture }}></span></div>
-        </>
-    )
-}
-function Event({ value }) {
-    return (
-        <>
-            <div><span className="tag">관람가능연령</span><span dangerouslySetInnerHTML={{ __html: value.agelimit }}></span></div>
-            <div><span className="tag">관람소요시간</span><span dangerouslySetInnerHTML={{ __html: value.spendtime }}></span></div>
-            <div><span className="tag">주최자정보</span><span dangerouslySetInnerHTML={{ __html: value.sponsor1 }}></span></div>
-            <div><span className="tag">주최자연락처</span><span dangerouslySetInnerHTML={{ __html: value.sponsor1tel }}></span></div>
-            <div><span className="tag">주관사정보</span><span dangerouslySetInnerHTML={{ __html: value.sponsor2 }}></span></div>
-            <div><span className="tag">주관사연락처</span><span dangerouslySetInnerHTML={{ __html: value.sponsor2tel }}></span></div>
-            <div><span className="tag">공연시간</span><span dangerouslySetInnerHTML={{ __html: value.playtime }}></span></div>
-            <div><span className="tag">이용요금</span><span dangerouslySetInnerHTML={{ __html: value.usetimefestival }}></span></div>
-            <div><span className="tag">행사장소</span><span dangerouslySetInnerHTML={{ __html: value.eventplace }}></span></div>
-            <div><span className="tag">행사시작일</span><span dangerouslySetInnerHTML={{ __html: value.eventstartdate }}></span></div>
-            <div><span className="tag">행사종료일</span><span dangerouslySetInnerHTML={{ __html: value.eventenddate }}></span></div>
-        </>
-    )
-}
-function Hotel({ value }) {
-    return (
-        <>
-            <div><span className="tag">규모</span><span dangerouslySetInnerHTML={{ __html: value.scalelodging }}></span></div>
-            <div><span className="tag">수용가능인원</span><span dangerouslySetInnerHTML={{ __html: value.accomcountlodging }}></span></div>
-            <div><span className="tag">입실시간</span><span dangerouslySetInnerHTML={{ __html: value.checkintime }}></span></div>
-            <div><span className="tag">퇴실시간</span><span dangerouslySetInnerHTML={{ __html: value.checkouttime }}></span></div>
-            <div><span className="tag">객실유형</span><span dangerouslySetInnerHTML={{ __html: value.roomtype }}></span></div>
-            <div><span className="tag">객실내취사여부</span><span dangerouslySetInnerHTML={{ __html: value.chkcooking }}></span></div>
-            <div><span className="tag">식음료장</span><span dangerouslySetInnerHTML={{ __html: value.foodplace }}></span></div>
-            <div><span className="tag">환불규정</span><span dangerouslySetInnerHTML={{ __html: value.refundregulation }}></span></div>
-            <div><span className="tag">주차시설</span><span dangerouslySetInnerHTML={{ __html: value.parkinglodging }}></span></div>
-            <div><span className="tag">픽업서비스</span><span dangerouslySetInnerHTML={{ __html: value.pickup }}></span></div>
-            <div><span className="tag">문의및안내</span><span dangerouslySetInnerHTML={{ __html: value.infocenterlodging }}></span></div>
-            <div><span className="tag">예약안내</span><span dangerouslySetInnerHTML={{ __html: value.reservationlodging }}></span></div>
-        </>
-    )
-}
+// function Culture({ value }) {
+//     return (
+//         <>
+//             <div className="botton-info-area-tag"><p>규모</span><span dangerouslySetInnerHTML={{ __html: value.scale }}></span></div>
+//             <div className="botton-info-area-tag"><p>이용요금</span><span dangerouslySetInnerHTML={{ __html: value.usefee }}></span></div>
+//             <div className="botton-info-area-tag"><p>문의및안내</span><span dangerouslySetInnerHTML={{ __html: value.infocenterculture }}></span></div>
+//             <div className="botton-info-area-tag"><p>이용시간</span><span dangerouslySetInnerHTML={{ __html: value.usetimeculture }}></span></div>
+//             <div className="botton-info-area-tag"><p>쉬는날</span><span dangerouslySetInnerHTML={{ __html: value.restdateculture }}></span></div>
+//             <div className="botton-info-area-tag"><p>주차시설</span><span dangerouslySetInnerHTML={{ __html: value.parkingculture }}></span></div>
+//             <div className="botton-info-area-tag"><p>신용카드가능정보</span><span dangerouslySetInnerHTML={{ __html: value.chkcreditcardculture }}></span></div>
+//         </>
+//     )
+// }
+// function Event({ value }) {
+//     return (
+//         <>
+//             <div className="botton-info-area-tag"><p>관람가능연령</span><span dangerouslySetInnerHTML={{ __html: value.agelimit }}></span></div>
+//             <div className="botton-info-area-tag"><p>관람소요시간</span><span dangerouslySetInnerHTML={{ __html: value.spendtime }}></span></div>
+//             <div className="botton-info-area-tag"><p>주최자정보</span><span dangerouslySetInnerHTML={{ __html: value.sponsor1 }}></span></div>
+//             <div className="botton-info-area-tag"><p>주최자연락처</span><span dangerouslySetInnerHTML={{ __html: value.sponsor1tel }}></span></div>
+//             <div className="botton-info-area-tag"><p>주관사정보</span><span dangerouslySetInnerHTML={{ __html: value.sponsor2 }}></span></div>
+//             <div className="botton-info-area-tag"><p>주관사연락처</span><span dangerouslySetInnerHTML={{ __html: value.sponsor2tel }}></span></div>
+//             <div className="botton-info-area-tag"><p>공연시간</span><span dangerouslySetInnerHTML={{ __html: value.playtime }}></span></div>
+//             <div className="botton-info-area-tag"><p>이용요금</span><span dangerouslySetInnerHTML={{ __html: value.usetimefestival }}></span></div>
+//             <div className="botton-info-area-tag"><p>행사장소</span><span dangerouslySetInnerHTML={{ __html: value.eventplace }}></span></div>
+//             <div className="botton-info-area-tag"><p>행사시작일</span><span dangerouslySetInnerHTML={{ __html: value.eventstartdate }}></span></div>
+//             <div className="botton-info-area-tag"><p>행사종료일</span><span dangerouslySetInnerHTML={{ __html: value.eventenddate }}></span></div>
+//         </>
+//     )
+// }
+// function Hotel({ value }) {
+//     return (
+//         <>
+//             <div className="botton-info-area-tag"><p>규모</span><span dangerouslySetInnerHTML={{ __html: value.scalelodging }}></span></div>
+//             <div className="botton-info-area-tag"><p>수용가능인원</span><span dangerouslySetInnerHTML={{ __html: value.accomcountlodging }}></span></div>
+//             <div className="botton-info-area-tag"><p>입실시간</span><span dangerouslySetInnerHTML={{ __html: value.checkintime }}></span></div>
+//             <div className="botton-info-area-tag"><p>퇴실시간</span><span dangerouslySetInnerHTML={{ __html: value.checkouttime }}></span></div>
+//             <div className="botton-info-area-tag"><p>객실유형</span><span dangerouslySetInnerHTML={{ __html: value.roomtype }}></span></div>
+//             <div className="botton-info-area-tag"><p>객실내취사여부</span><span dangerouslySetInnerHTML={{ __html: value.chkcooking }}></span></div>
+//             <div className="botton-info-area-tag"><p>식음료장</span><span dangerouslySetInnerHTML={{ __html: value.foodplace }}></span></div>
+//             <div className="botton-info-area-tag"><p>환불규정</span><span dangerouslySetInnerHTML={{ __html: value.refundregulation }}></span></div>
+//             <div className="botton-info-area-tag"><p>주차시설</span><span dangerouslySetInnerHTML={{ __html: value.parkinglodging }}></span></div>
+//             <div className="botton-info-area-tag"><p>픽업서비스</span><span dangerouslySetInnerHTML={{ __html: value.pickup }}></span></div>
+//             <div className="botton-info-area-tag"><p>문의및안내</span><span dangerouslySetInnerHTML={{ __html: value.infocenterlodging }}></span></div>
+//             <div className="botton-info-area-tag"><p>예약안내</span><span dangerouslySetInnerHTML={{ __html: value.reservationlodging }}></span></div>
+//         </>
+//     )
+// }
 

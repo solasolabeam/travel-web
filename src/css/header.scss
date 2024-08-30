@@ -161,7 +161,6 @@ body {
         .search-icon {
             position: absolute;
             top: 20px;
-            ;
             right: 15px;
             cursor: pointer;
         }
@@ -414,10 +413,12 @@ body {
             margin: 200px 0 50px 0;
             display: flex;
             justify-content: center;
+
             div {
                 width: 300px;
                 border-top: 1px solid black;
                 border-bottom: 1px solid black;
+
                 p {
                     margin: 30px 0;
                     font-size: 50px;
@@ -430,50 +431,54 @@ body {
             background: #f7f6f6;
             border-radius: 20px;
             padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
 
-            .botton-info-area-tag {
-                padding: 10px 20px;
-                width: 350px;
-                background: #c29797;
-                color: white;
+            // gap: 10%;
+            .botton-info-flex {
+                display: flex;
+                flex-direction: row;
+                text-align: center;
                 margin-bottom: 10px;
-                p {
-                    margin: 0;
-                    font-size: 30px;
+
+                %flex-center {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 10px;
                 }
 
-            }
-            .botton-info-area-content {
-                p {
-                    font-family: 'GmarketSansLight';
-                    font-size: 20px;
+                .botton-info-area-tag {
+                    width: 20%;
+                    background: #c29797;
+                    color: white;
+                    @extend %flex-center;
+
+                    p {
+                        margin: 0;
+                        padding: 10px 0;
+                        font-size: 30px;
+                    }
+
+                }
+
+                .botton-info-area-space {
+                    width: 2%;
+                }
+
+                .botton-info-area-content {
+                    background: white;
+                    width: 78%;
+                    word-break: break-all;
+                    @extend %flex-center;
+
+                    p {
+                        white-space: normal;
+                        margin: 0;
+                        font-family: 'GmarketSansLight';
+                        font-size: 30px;
+                    }
                 }
             }
-            // div {
-            //     margin-bottom: 20px;
 
-            //     span {
-            //         margin-right: 30px;
-            //         font-family: 'GmarketSansLight';
-            //         font-size: 20px;
-            //         padding: 15px;
-            //         display: inline-block;
-            //     }
-
-            //     .tag {
-            //         border: 1px solid rgb(196, 194, 194);
-            //         background: #c29797;
-            //         color: #ffffff;
-            //         border-radius: 5px;
-            //         font-family: 'GmarketSansBold';
-            //         width: 300px;
-            //         text-align: center;
-            //     }
-            // }
         }
     }
 
