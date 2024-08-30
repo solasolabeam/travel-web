@@ -73,7 +73,7 @@ export default function Detail() {
             <div className="detail-title">
                 <div className="detail-title-top">
                     <div className="tag">
-                        <p>{detailData.cat1Name}</p>
+                        <p>{detailData.sidoName}</p>
                     </div>
                     <div className="title">
                         <p>{detailData.title}</p>
@@ -99,7 +99,10 @@ export default function Detail() {
                     }
                 </div>
                 <div>
-                    <p className="botton-info">Info</p>
+                    <div>
+                        <p className="botton-info">이용안내</p>
+                    </div>
+                    <div className="botton-info-area">
                     {
                         intro.map((v, i) => {
                             return (
@@ -112,6 +115,7 @@ export default function Detail() {
                             )
                         })
                     }
+                    </div>
                 </div>
 
 

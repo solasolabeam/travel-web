@@ -419,29 +419,38 @@ body {
             }
         }
         > div:nth-child(2) {
-            .botton-info {
-                font-size: 50px;
-                margin: 30px 0;
-            }
-            div {
-                margin-bottom: 20px;
-                span {
-                    margin-right: 30px;
-                    font-family: 'GmarketSansLight';
-                    font-size: 20px;
-                    padding: 15px;
-                    display: inline-block;
-                }
-                .tag {
-                    border: 1px solid rgb(196, 194, 194);
-                    background: #c29797;
-                    color: #ffffff;
-                    border-radius: 5px;
-                    font-family: 'GmarketSansBold';
-                    width: 300px;
+            > div {
+                .botton-info {
                     text-align: center;
+                    font-size: 50px;
+                    margin: 200px 0 50px 0;
                 }
             }
+            .botton-info-area {
+                background: #f7f6f6;
+                border-radius: 20px;
+                padding: 20px;
+                div {
+                    margin-bottom: 20px;
+                    span {
+                        margin-right: 30px;
+                        font-family: 'GmarketSansLight';
+                        font-size: 20px;
+                        padding: 15px;
+                        display: inline-block;
+                    }
+                    .tag {
+                        border: 1px solid rgb(196, 194, 194);
+                        background: #c29797;
+                        color: #ffffff;
+                        border-radius: 5px;
+                        font-family: 'GmarketSansBold';
+                        width: 300px;
+                        text-align: center;
+                    }
+                }
+            }
+            
         }
 
        
