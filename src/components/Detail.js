@@ -88,18 +88,23 @@ export default function Detail() {
                         <img src={detailData.firstimage} />
                 }
             </div>
+            <div className="detail-desc">
+                {
+                    common.length != 0 && <p dangerouslySetInnerHTML={{ __html: common[0].overview }}></p>
+                }
+            </div>
             <div className="detail-info">
-                <div>
-                    {
-                        common.length != 0 && <p dangerouslySetInnerHTML={{ __html: common[0].overview }}></p>
-                    }
-                </div>
-                <div>
+                <div className="botton-info-title">
                     <div>
-                        <p className="botton-info">이용안내</p>
+                        <p>이용 안내</p>
                     </div>
-                    <div className="botton-info-area">
-                        {
+                </div>
+                <div className="botton-info-area">
+                    <div className="botton-info-area-tag"><p>가나다라</p></div><div className="botton-info-area-content"><p>가나다라</p></div>
+
+                    
+                    
+                    {/* {
                             intro.map((v, i) => {
                                 return (
                                     <>
@@ -110,13 +115,9 @@ export default function Detail() {
                                     </>
                                 )
                             })
-                        }
-                    </div>
+                        } */}
                 </div>
-
-
             </div>
-
             <div className="detail-map">
                 <Map
                     center={{ lat: detailData.mapy, lng: detailData.mapx }}
@@ -125,7 +126,6 @@ export default function Detail() {
                     <MapMarker position={{ lat: detailData.mapy, lng: detailData.mapx }}></MapMarker>
                 </Map>
             </div>
-
         </div>
     )
 }
