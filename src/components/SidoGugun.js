@@ -97,108 +97,60 @@ export default function SidoGugun() {
         }
     }
     async function activeSearch() {
+        var url = 'https://apis.data.go.kr/B551011/KorService1/';
+        var params = {
+            serviceKey: key,
+            numOfRows: (6 * addRow),
+            pageNo: '1',
+            MobileOS: 'ETC',
+            MobileApp: 'AppTest',
+            listYN: 'Y',
+            arrange: 'A',
+            contentTypeId: contentTypeVal,
+            areaCode: sidoVal, // 시/도
+            sigunguCode: gugunVal, // 구/군
+            cat1: cat1Val,
+            cat2: cat2Val,
+            cat3: cat3Val,
+        };
+
         if (keyword == '') {
-            var url = 'https://apis.data.go.kr/B551011/KorService1/areaBasedList1';
-            var key = 'WNBEfQ1MXM62Fv6qETObrCjjwWv7ji1iNrMTCVWwk6ET3BB8YmqPhT/uX6boztyIRyPzD40LtfLBGQTcimcXQA==';
-            var params = {
-                serviceKey: key,
-                numOfRows: (6 * addRow),
-                pageNo: '1',
-                MobileOS: 'ETC',
-                MobileApp: 'AppTest',
-                listYN: 'Y',
-                arrange: 'A',
-                contentTypeId: contentTypeVal,
-                areaCode: sidoVal, // 시/도
-                sigunguCode: gugunVal, // 구/군
-                cat1: cat1Val,
-                cat2: cat2Val,
-                cat3: cat3Val,
-            };
-
-            const queryString = new URLSearchParams(params).toString();  // url에 쓰기 적합한 querySting으로 return 해준다. 
-            const requrl = `${url}?${queryString}&_type=json`;
-
-            let res = await fetch(requrl)
-            let data = await res.json()
-
-            if (data.response.body.items.length == 0) {
-                dispatch(changeHeaderSearch([]))
-            } else {
-                 data = data.response.body.items.item
-                 let newData = data.map(value => {
-                    let contentName = '';
-                    let sidoName = '';
-                    
-                    // 콘텐츠 명 setting
-                    contentType.forEach(item => {
-                        if(value.contenttypeid == item.code) {
-                            contentName = item.name
-                        }
-                    })
-                    // 시/도 명 setting
-                    sido.forEach(item => {
-                        if(value.areacode == item.code) {
-                            sidoName = item.name
-                        }
-                    })
-
-                    return {...value, contentName: contentName, sidoName: sidoName}
-                })
-                dispatch(changeHeaderSearch([...newData]))
-            }
-
+            url += 'areaBasedList1'
         } else {
-            var url = 'https://apis.data.go.kr/B551011/KorService1/searchKeyword1';
-            var key = 'WNBEfQ1MXM62Fv6qETObrCjjwWv7ji1iNrMTCVWwk6ET3BB8YmqPhT/uX6boztyIRyPzD40LtfLBGQTcimcXQA==';
-            var params = {
-                serviceKey: key,
-                MobileApp: 'AppTest',
-                MobileOS: 'ETC',
-                pageNo: '1',
-                numOfRows: (6 * addRow),
-                listYN: 'Y',
-                arrange: 'A',
-                contentTypeId: contentTypeVal,
-                areaCode: sidoVal, // 시/도
-                sigunguCode: gugunVal, // 구/군
-                cat1: cat1Val,
-                cat2: cat2Val,
-                cat3: cat3Val,
-                keyword: keyword  // 검색어 필수!
-            };
+            url += 'searchKeyword1'
+            params['keyword'] = keyword  // 검색어 필수!
+        }
 
-            const queryString = new URLSearchParams(params).toString();  // url에 쓰기 적합한 querySting으로 return 해준다. 
-            const requrl = `${url}?${queryString}&_type=json`;
+        const queryString = new URLSearchParams(params).toString();  // url에 쓰기 적합한 querySting으로 return 해준다. 
+        const requrl = `${url}?${queryString}&_type=json`;
 
-            let res = await fetch(requrl)
-            let data = await res.json()
+        let res = await fetch(requrl)
+        let data = await res.json()
 
-            if (data.response.body.items.length == 0) {
-                dispatch(changeHeaderSearch([]))
-            } else {
-                 data = data.response.body.items.item
-                 data = data.map(value => {
-                    let contentName = '';
-                    let cat1Name = '';
-                    
-                    // 시/도 명 setting
-                    sido.forEach(item => {
-                        if(value.areacode == item.code) {
-                            contentName = item.name
-                        }
-                    })
-                    // 카테고리명 setting
-                    allCat1.forEach(item => {
-                        if(value.cat1 == item.code) {
-                            cat1Name = item.name
-                        }
-                    })
+        if (data.response.body.items.length == 0) {
+            dispatch(changeHeaderSearch([]))
+        } else {
+            data = data.response.body.items.item
+            let newData = data.map(value => {
+                let contentName = '';
+                let sidoName = '';
 
-                    return {...value, contentName: contentName, cat1Name: cat1Name}
+                // 콘텐츠 명 setting
+                contentType.forEach(item => {
+                    if (value.contenttypeid == item.code) {
+                        contentName = item.name
+                    }
                 })
-                dispatch(changeHeaderSearch([...data]))
-            }
+                // 시/도 명 setting
+                sido.forEach(item => {
+                    if (value.areacode == item.code) {
+                        sidoName = item.name
+                    }
+                })
+
+                return { ...value, contentName: contentName, sidoName: sidoName }
+            })
+            dispatch(changeHeaderSearch([...newData]))
         }
     }
 
