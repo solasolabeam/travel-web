@@ -10,6 +10,7 @@ import SidoGugun from './components/SidoGugun';
 import RecommendPart from './components/RecommendPart';
 import Footer from './components/Footer';
 import Detail from './components/Detail';
+import MyLocation from './components/MyLocation';
 
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import getContentType from './api/contentType';
@@ -24,9 +25,9 @@ import { useDispatch } from 'react-redux';
 function App() {
   let dispatch = useDispatch()
 
-  useEffect(()=> {
+  useEffect(() => {
     getSido().then((data) => dispatch(changeSido(data.response.body.items.item)))
-  },[])
+  }, [])
 
   return (
     <>
@@ -42,6 +43,7 @@ function App() {
         {getContentType.map((v, i) => <Route path={`${v.url}/detail/:id`} key={v.code} element={<Detail />} />)}
 
       </Routes>
+      {/* <Route path='/mylocation' element={<MyLocation />} /> */}
       <Footer />
     </>
   );
