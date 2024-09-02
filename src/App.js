@@ -33,17 +33,12 @@ function App() {
     <>
       <Header />
       <Routes>
-        <Route path='/' element={
-          <>
-            <RecommendPart />
-          </>
-        } />
+        <Route path='/' element={<RecommendPart />} />
         {/* <Route path='/*' element={<div>없는페이지</div>} /> */}
         {getContentType.map((v, i) => <Route path={v.url} key={v.code} element={<SidoGugun />} />)}
         {getContentType.map((v, i) => <Route path={`${v.url}/detail/:id`} key={v.code} element={<Detail />} />)}
-
+        <Route path='/mylocation' element={<MyLocation />} />
       </Routes>
-      {/* <Route path='/mylocation' element={<MyLocation />} /> */}
       <Footer />
     </>
   );

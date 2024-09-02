@@ -43,6 +43,7 @@ export default function Header() {
 
       <div className='category-container'>
         <ul>
+          <li onClick={() => { navigate('/') }} >인기</li>
           {
             contentType.map((v, i) => {
               return (
@@ -53,15 +54,15 @@ export default function Header() {
               )
             })
           }
+          <li onClick={() => { navigate('/mylocation') }} >내 주변</li>
         </ul>
         {/* <p>🏆 인기 여행지 추천</p> */}
-
       </div>
 
       <div className='header-bg'>
         <Slide />
       </div>
-      
+
 
 
     </>
