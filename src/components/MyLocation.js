@@ -10,7 +10,26 @@ export default function MyLocation() {
     return (
         <div className="loc-container">
             <div className="loc-list">
-                <div className="loc-list-item">
+                <div className="loc-list-search">
+                    <div>
+                        <input />
+                    </div>
+                    <div>
+                        <ul>
+                            <li>관광지</li>
+                            <li>문화시설</li>
+                            <li>행사</li>
+                            <li>숙박</li>
+                        </ul>
+                    </div>
+                    
+                </div>
+                <div className="loc-list-result">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
                 </div>
             </div>
             <div className="loc-map">
