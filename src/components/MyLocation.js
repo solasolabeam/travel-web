@@ -11,6 +11,7 @@ export default function MyLocation() {
     const [list, setList] = useState([])
 
     useEffect(() => {
+        console.log('cc')
         getLocation().then((data) => setList([...data.response.body.items.item]))
     }, [])
 
@@ -33,18 +34,13 @@ export default function MyLocation() {
 
                 </div>
                 <div className="loc-list-result">
-                    <div>
-                        <div className="list-img">
-                            <div><img src={noIMG} /></div>
-                        </div>
-                        <div className="list-item">
-                            <ul>
-                                <li>금강제화 명동본점</li>
-                                <li><span class="material-symbols-outlined">apartment</span>서울특별시 중구 명동8길 7</li>
-                                <li><span class="material-symbols-outlined">call</span>02-753-9411</li>
-                            </ul>
-                        </div>
-                    </div>
+                    {
+                        list.map((v, i) => {
+                            return (
+                                <Around value={v} />
+                            )
+                        })
+                    }
                 </div>
             </div>
             <div className="loc-map">
@@ -56,10 +52,31 @@ export default function MyLocation() {
                     <MapMarker position={{ lat: 37.563446, lng: 126.983745 }}></MapMarker>
                     {
                         list.map((v, i) => {
-                            <MapMarker position={{ lat: v.mapy, lng: v.mapx }}></MapMarker>
+                            return (
+                                <MapMarker position={{ lat: v.mapy, lng: v.mapx }}></MapMarker>
+                            )
                         })
                     }
                 </Map>
+            </div>
+        </div>
+    )
+}
+
+function Around({ value }) {
+    return (
+        <div>
+            <div className="list-img">
+                <div>
+                    {value.firstimage == '' ? <img src={noIMG} /> : <img src={value.firstimage} />}
+                </div>
+            </div>
+            <div className="list-item">
+                <ul>
+                    <li>{value.title}</li>
+                    <li><span class="material-symbols-outlined">apartment</span>{value.addr1}</li>
+                    <li><span class="material-symbols-outlined">call</span>{value.tel}</li>
+                </ul>
             </div>
         </div>
     )
