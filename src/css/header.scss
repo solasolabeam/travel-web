@@ -643,15 +643,17 @@ body {
     background: white;
     position: absolute;
     border: 1px solid rgb(226, 224, 224);
-    bottom: 50px;
-    left: -15px;
+    bottom: 30px;
+    left: -80px;
     width: 300px;
     height: 120px;
 
 
     .overlay-title {
         height: 30%;
-        background: #cee0c7;
+        background: #60b6f0;
+        text-align: center;
+        color: rgb(247, 247, 247);
         display: flex;
         align-items: center;
 
@@ -668,6 +670,7 @@ body {
             width: 20%;
             font-family: 'GmarketSansMedium';
             text-align: center;
+            
             &:hover {
                 cursor: pointer;
             }
@@ -698,6 +701,7 @@ body {
                 padding: 0 0 0 5px;
                 line-height: 25px;
                 li {
+                    font-size: 11px;
                     font-family: 'GmarketSansMedium';
                     @extend %textOverflow;
                 }

@@ -13,7 +13,7 @@ export default function MyLocation() {
     const [list, setList] = useState([])
     const [lat, setLat] = useState(0)       //위도 Y좌표
     const [lng, setLng] = useState(0)       //경도 X좌표
-    const [isOpen, setIsOpen] = useState(false) // 인포윈도우 Open 여부를 저장하는 state 입니다.
+    const [isOpen, setIsOpen] = useState([]) // 인포윈도우 Open 여부를 저장하는 state 입니다.
 
     useEffect(() => {
         async function getLocation(pos) {
@@ -42,6 +42,12 @@ export default function MyLocation() {
             const data = await res.json()
 
             setList([...data.response.body.items.item])
+
+            let array = []
+            list.forEach(v => {
+                array.push(false)
+            })
+            setIsOpen(array)
         }
 
         function showErrorMsg(error) { // 실패했을때 실행
@@ -99,9 +105,9 @@ export default function MyLocation() {
                 <Map
                     center={{ lat: lat, lng: lng }}     //지도의 중심좌표
                     style={{ width: "100%", height: "100%" }}        //지도 크기
-                    level={6}                                       //지도 확대 레벨
+                    level={5}                                       //지도 확대 레벨
                 >
-                    <MapMarker position={{ lat: lat, lng: lng }} onClick={() => setIsOpen(!isOpen)} />
+                    <MapMarker position={{ lat: lat, lng: lng }} />
 
                     {
                         list.map((v, i) => {
@@ -115,40 +121,52 @@ export default function MyLocation() {
                                             height: 35
                                         }, // 마커이미지의 크기입니다
                                     }}
-                                    content="123"
+                                    onClick={() => {
+                                        isOpen[i] = !isOpen[i]
+                                        setIsOpen([...isOpen])
+                                    }}
                                 ></MapMarker>
                             )
                         })
                     }
-
-                    <CustomOverlayMap // 커스텀 오버레이를 표시할 Container
-                        position={{
-                            lat: lat,
-                            lng: lng,
-                        }}
-                    >
-                        {/* 커스텀 오버레이에 표시할 내용입니다 */}
-                        {
-                            isOpen &&
-                            <div className="overlay-container">
-                                <div className="overlay-title">
-                                    <p>sssssssssssssssssssssssssssssssssssssssss</p>
-                                    <p>X</p>
-                                </div>
-                                <div className="overlay-content">
-                                    <div className="overlay-content-left">
-                                        <img src={noIMG} />
-                                    </div>
-                                    <div className="overlay-content-right">
-                                        <ul>
-                                            <li>11</li>
-                                            <li>22</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        }
-                    </CustomOverlayMap>
+                    {
+                        list.map((v, i) => {
+                            return (
+                                <CustomOverlayMap // 커스텀 오버레이를 표시할 Container
+                                    position={{
+                                        lat: `${v.mapy}`,
+                                        lng: `${v.mapx}`,
+                                    }}
+                                >
+                                    {/* 커스텀 오버레이에 표시할 내용입니다 */}
+                                    {
+                                        isOpen[i] &&
+                                        <div className="overlay-container">
+                                            <div className="overlay-title">
+                                                <p>{v.title}</p>
+                                                <p onClick={() => {
+                                                    isOpen[i] = !isOpen[i]
+                                                    setIsOpen([...isOpen])
+                                                }}>
+                                                    X</p>
+                                            </div>
+                                            <div className="overlay-content">
+                                                <div className="overlay-content-left">
+                                                    {v.firstimage == '' ? <img src={noIMG} /> : <img src={v.firstimage} />}
+                                                </div>
+                                                <div className="overlay-content-right">
+                                                    <ul>
+                                                        <li>{v.addr1}</li>
+                                                        <li>{v.tel}</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </CustomOverlayMap>
+                            )
+                        })
+                    }
                 </Map>
             </div>
         </div>
