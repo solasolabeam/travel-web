@@ -642,15 +642,12 @@ body {
 .overlay-container {
     background: white;
     position: absolute;
-    border: 1px solid black;
+    border: 1px solid rgb(226, 224, 224);
     bottom: 50px;
     left: -15px;
     width: 300px;
     height: 120px;
 
-    >div {
-        border: 1px solid black;
-    }
 
     .overlay-title {
         height: 30%;
@@ -682,9 +679,6 @@ body {
         height: 70%;
         display: flex;
 
-        >div {
-            border: 1px solid black;
-        }
 
         .overlay-content-left {
             width: 40%;
@@ -702,7 +696,7 @@ body {
             ul {
                 list-style: none;
                 padding: 0 0 0 5px;
-
+                line-height: 25px;
                 li {
                     font-family: 'GmarketSansMedium';
                     @extend %textOverflow;
