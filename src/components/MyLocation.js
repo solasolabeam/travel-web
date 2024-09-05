@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 // import getLocation from "../api/locationSearch"
 import { CustomOverlayMap, Map, MapMarker } from "react-kakao-maps-sdk"
 //Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
+import { faCrosshairs } from "@fortawesome/free-solid-svg-icons"
 import noIMG from '../img/No_Image_Available.jpg';
 import { key } from "../api/key";
 import { useNavigate } from "react-router-dom";
@@ -14,6 +14,21 @@ export default function MyLocation() {
     const [lat, setLat] = useState(0)       //위도 Y좌표
     const [lng, setLng] = useState(0)       //경도 X좌표
     const [isOpen, setIsOpen] = useState([]) // 인포윈도우 Open 여부를 저장하는 state 입니다.
+    const [currentLoc, setCurrentLoc] = useState('')
+
+
+    const getAddress = useCallback((lat, lng) => {
+        const geocoder = new window.kakao.maps.services.Geocoder();
+        const coord = new window.kakao.maps.LatLng(lat, lng);
+        const callback = function (result,status) {
+            if (status === window.kakao.maps.services.Status.OK) {
+                setCurrentLoc(result[0].address.address_name)
+            }
+        };
+        geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
+    }, [lat]);
+
+    getAddress(lat, lng)
 
     useEffect(() => {
         async function getLocation(pos) {
@@ -71,6 +86,7 @@ export default function MyLocation() {
         }
 
         navigator.geolocation.getCurrentPosition(getLocation, showErrorMsg);
+        
     }, [])
 
     return (
@@ -78,8 +94,7 @@ export default function MyLocation() {
             <div className="loc-list">
                 <div className="loc-list-search">
                     <div>
-                        <input />
-                        <FontAwesomeIcon icon={faMagnifyingGlass} className="icon" />
+                        {lat != 0 ? <><FontAwesomeIcon icon={faCrosshairs} /><span>  {currentLoc}</span></> : <span>위치정보 권한을 허용해주세요</span>}
                     </div>
                     <div>
                         <ul>
