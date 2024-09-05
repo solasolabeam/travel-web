@@ -500,7 +500,7 @@ body {
     justify-content: space-between;
 
     >div {
-        border: 1px solid rgb(221, 221, 221);
+        // border: 1px solid rgb(221, 221, 221);
         height: 800px;
     }
 
@@ -509,12 +509,9 @@ body {
         display: flex;
         flex-direction: column;
 
-        >div {
-            // flex: 0 0 150px;
-        }
-
         .loc-list-search {
-            border: 1px solid rgb(192, 185, 185);
+            background: rgb(121, 122, 122);
+            color: #fcfcfc;
             height: 15%; //자료-검색
             display: flex;
             flex-direction: column;
@@ -523,32 +520,37 @@ body {
             gap: 10px;
 
             >div {
-                position: relative;
+                width: 100%;
+                text-align: center;
 
-                input {
-                    width: 400px;
-                    height: 40px;
-                }
+            }
 
-                .icon {
-                    position: absolute;
-                    top: 13px;
-                    right: 10px;
+            div:nth-child(2) {
+                background: #555455;
+                display: flex;
+                justify-content: center;
+            }
+
+            span {
+
+                font-size: 20px;
+            }
+
+            ul {
+                padding: 0;
+                margin: 0;
+                list-style: none;
+                display: flex;
+                gap: 20px;
+
+                li {
+                    // border: 1px solid red;
+                    font-family: 'GmarketSansMedium';
                     cursor: pointer;
-                }
+                    padding: 10px;
 
-                ul {
-                    padding: 0;
-                    margin: 0;
-                    list-style: none;
-                    display: flex;
-                    gap: 20px;
-
-                    li {
-                        // border: 1px solid red;
-                        font-family: 'GmarketSansMedium';
-                        cursor: pointer;
-                        padding: 10px;
+                    &:hover {
+                        background: #8a8a8a;
                     }
                 }
             }
@@ -559,6 +561,22 @@ body {
             display: flex;
             flex-direction: column;
             overflow-y: auto;
+
+            &::-webkit-scrollbar {
+                width: 10px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: #2f3542;
+                border-radius: 15px;
+                background-clip: padding-box;
+                border: 2px solid transparent;
+            }
+
+            &::-webkit-scrollbar-track {
+                background-color: grey;
+                box-shadow: inset 0px 0px 5px white;
+            }
 
             >div {
                 border-bottom: 1px solid rgb(216, 216, 216);
@@ -662,15 +680,17 @@ body {
             padding-left: 7px;
             @extend %textOverflow;
         }
+
         p:nth-child(1) {
             width: 80%;
-            
+
         }
+
         p:nth-child(2) {
             width: 20%;
             font-family: 'GmarketSansMedium';
             text-align: center;
-            
+
             &:hover {
                 cursor: pointer;
             }
@@ -700,6 +720,7 @@ body {
                 list-style: none;
                 padding: 0 0 0 5px;
                 line-height: 25px;
+
                 li {
                     font-size: 11px;
                     font-family: 'GmarketSansMedium';
