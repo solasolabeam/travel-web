@@ -268,28 +268,11 @@ body {
     }
 }
 
-.local-container {
+.recommand-container {
     @extend %mt-20-wd-1200;
 
-    p {
-        font-size: 40px;
-    }
-
-    .local-griad-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-        grid-template-rows: 200px 200px;
-        grid-gap: 30px;
-
-        div {
-            border: 1px solid black;
-            border-radius: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            cursor: pointer;
-        }
+    .recommand-card-area {
+        height: 200px;
     }
 
 }
@@ -736,10 +719,5 @@ body {
     .card-container {
         grid-template-columns: 400px 400px;
         grid-template-rows: 500px 500px 500px;
-    }
-
-    .local-griad-container {
-        grid-template-columns: 400px 400px;
-        grid-template-rows: 400px 400px 400px 400px 400px;
     }
 }
