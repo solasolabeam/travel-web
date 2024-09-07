@@ -1,8 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { changeCat1CVal, changeCat2CVal, changeCat3CVal, changeContentTypeVal, changeGugun, changeGugunVal, changeKeyword, changeRow, changeSido, changeSidoVal } from "../store/store";
-import Slide from "./Slide";
-
 
 export default function Header() {
   let contentType = useSelector(state => state.contentType)
@@ -34,6 +32,7 @@ export default function Header() {
 
   return (
     <>
+      {/* 로고 & 페이지 이름 */}
       <div className='header-container'>
         <div>
           <span style={{ cursor: 'pointer' }} onClick={() => navigate('/')}>구석구석</span>
@@ -41,6 +40,7 @@ export default function Header() {
         <div style={{ textAlign: 'right' }} ><span>로그인</span></div>
       </div>
 
+      {/* 상단 카테고리 */}
       <div className='category-container'>
         <ul>
           <li onClick={() => { navigate('/') }} >인기</li>
@@ -56,15 +56,7 @@ export default function Header() {
           }
           <li onClick={() => { navigate('/mylocation') }} >내 주변</li>
         </ul>
-        {/* <p>🏆 인기 여행지 추천</p> */}
       </div>
-
-      <div className='header-bg'>
-        <Slide />
-      </div>
-
-
-
     </>
   )
 };

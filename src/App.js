@@ -6,6 +6,7 @@ import getSido from './api/sido';
 
 //Components 호출
 import Header from './components/Header';
+import Slide from "./components/Slide";
 import SidoGugun from './components/SidoGugun';
 import RecommendPart from './components/RecommendPart';
 import Footer from './components/Footer';
@@ -33,8 +34,14 @@ function App() {
     <>
       <Header />
       <Routes>
-        <Route path='/' element={<RecommendPart />} />
-        {/* <Route path='/*' element={<div>없는페이지</div>} /> */}
+        <Route path='/' element={
+          <>
+            {/* 배너 슬라이드 */}
+            < Slide />
+            {/* 인기 */}
+            <RecommendPart />
+          </>
+        } />
         {getContentType.map((v, i) => <Route path={v.url} key={v.code} element={<SidoGugun />} />)}
         {getContentType.map((v, i) => <Route path={`${v.url}/detail/:id`} key={v.code} element={<Detail />} />)}
         <Route path='/mylocation' element={<MyLocation />} />
