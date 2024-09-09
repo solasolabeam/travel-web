@@ -114,6 +114,16 @@ let addRow = createSlice({
     }
 })
 
+let bannerIdx = createSlice({
+    name: 'bannerIdx',
+    initialState: '0',
+    reducers: {
+        changeBanner(state, action) {
+            return action.payload
+        }
+    }
+})
+
 export let { changeSido } = sido.actions
 export let { changeSidoVal } = sidoVal.actions
 export let { changeGugun } = gugun.actions
@@ -126,7 +136,8 @@ export let { changeCat3CVal } = cat3Val.actions
 export let { changeHeaderSearch } = headerSearch.actions
 export let { changeKeyword } = keyword.actions
 
-export let {changeRow} = addRow.actions
+export let { changeRow } = addRow.actions
+export let { changeBanner } = bannerIdx.actions
 
 
 export default configureStore({
@@ -144,6 +155,7 @@ export default configureStore({
         headerSearch: headerSearch.reducer,
         keyword: keyword.reducer,
 
-        addRow:addRow.reducer
+        addRow: addRow.reducer,
+        bannerIdx: bannerIdx.reducer
     }
 })

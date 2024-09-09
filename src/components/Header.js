@@ -3,11 +3,16 @@ import { useNavigate } from "react-router-dom";
 import { changeCat1CVal, changeCat2CVal, changeCat3CVal, changeContentTypeVal, changeGugun, changeGugunVal, changeKeyword, changeRow, changeSido, changeSidoVal } from "../store/store";
 import Slide from "./Slide";
 
+import getBannerData from "../data/bannerData";
+import { useState } from "react";
+
 export default function Header() {
+
+  const [banner, setBanner] = useState(getBannerData)
   let contentType = useSelector(state => state.contentType)
   let dispatch = useDispatch()
   let navigate = useNavigate()
-
+  let bannerIdx = useSelector(state => state.bannerIdx)
   function getSubCat(code) {
     dispatch(changeContentTypeVal(code))
     dispatch(changeSidoVal(''))
@@ -58,7 +63,7 @@ export default function Header() {
           <li onClick={() => { navigate('/mylocation') }} >내 주변</li>
         </ul>
       </div>
-      <div className="header-bg-container">
+      <div className="header-bg-container" style={{ background: banner[bannerIdx].bgColor }}>
         <div className="header-bg-area">
           <div>
             <p>11111</p>
