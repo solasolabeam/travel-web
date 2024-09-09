@@ -94,7 +94,10 @@ body {
 
 .header-bg-container {
     width: 100%;
-    background: #d1bcbc;
+    background: #76bdff;
+    // background: #f09696;
+    // background: #c2b2f8;
+    // background: #869fee;
 
     .header-bg-area {
         @extend %mt-20-wd-1200;
@@ -106,24 +109,31 @@ body {
         align-items: center;
 
         >div {
-            width: 50%;
             height: 100%;
             display: flex;
             align-items: center;
+        }
 
+        div:nth-child(1) {
+            width: 30%;
+        }
+        div:nth-child(2) {
+            width: 70%;
         }
 
 
         .header-slide-container {
+            width: 100% !important;
+
             .header-slide-area {
                 display: flex;
                 align-items: center;
-
+                justify-content: center;
+                width: 100%;
                 img {
                     width: 100%;
                     height: 450px;
                     object-fit: cover;
-
                     border-radius: 10px
                 }
             }

@@ -27,15 +27,19 @@ export default function Slide() {
                 }}
                 modules={[Autoplay, EffectFade, Navigation, Pagination]}
                 className='header-slide-container'
+                onSlideChange={(e)=>{console.log('e', e)}}
             >
                 <SwiperSlide className='header-slide-area'>
-                    <img src="https://fastly.picsum.photos/id/13/1200/450.jpg?hmac=l70-su6w4Yh1RJztPgbcs6kaZTrjxLN993IfxSHcY1s" className='header-slide-img'/>
+                    <img src="/img/banner1.jpg" className='header-slide-img'/>
                 </SwiperSlide>
                 <SwiperSlide className='header-slide-area'>
-                    <img src="https://fastly.picsum.photos/id/664/1200/450.jpg?hmac=WFY4nsFWBpylV7dtaIMOhwqaLnN5uIr3j8XcX0AJQ20" className='header-slide-img'/>
-                </SwiperSlide >
+                    <img src="/img/banner2.jpg" className='header-slide-img'/>
+                </SwiperSlide>
                 <SwiperSlide className='header-slide-area'>
-                    <img src="https://fastly.picsum.photos/id/427/1200/450.jpg?hmac=V6Ra80Iqm5J_7j4CTOcQb6xuu700Xd5sAoZ8gtzUwLM" className='header-slide-img'/>
+                    <img src="/img/banner3.jpg" className='header-slide-img'/>
+                </SwiperSlide>
+                <SwiperSlide className='header-slide-area'>
+                    <img src="/img/banner4.jpg" className='header-slide-img'/>
                 </SwiperSlide>
             </Swiper>
         </>

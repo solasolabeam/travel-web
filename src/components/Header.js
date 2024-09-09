@@ -67,13 +67,8 @@ export default function Header() {
             {/* 배너 슬라이드 */}
             <Slide />
           </div>
-
-
         </div>
       </div>
-
-
-
     </>
   )
 };
