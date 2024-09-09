@@ -13,7 +13,7 @@ import Footer from './components/Footer';
 import Detail from './components/Detail';
 import MyLocation from './components/MyLocation';
 
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import getContentType from './api/contentType';
 import { useEffect } from 'react';
 import { changeSido } from './store/store';

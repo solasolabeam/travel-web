@@ -13,7 +13,7 @@ import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules';
 
 export default function Slide() {
     return (
-        <>
+        <div className='header-slide-container'>
             <Swiper
                 spaceBetween={30}
                 autoplay={{
@@ -26,7 +26,7 @@ export default function Slide() {
                     clickable: true,
                 }}
                 modules={[Autoplay, EffectFade, Navigation, Pagination]}
-                className="header-slide"
+                className=""
             >
                 <SwiperSlide className='header-slide-area'>
                     <img src="https://fastly.picsum.photos/id/13/1200/450.jpg?hmac=l70-su6w4Yh1RJztPgbcs6kaZTrjxLN993IfxSHcY1s" />
@@ -38,6 +38,6 @@ export default function Slide() {
                     <img src="https://fastly.picsum.photos/id/427/1200/450.jpg?hmac=V6Ra80Iqm5J_7j4CTOcQb6xuu700Xd5sAoZ8gtzUwLM" />
                 </SwiperSlide>
             </Swiper>
-        </>
+        </div>
     );
 }
