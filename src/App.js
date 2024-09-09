@@ -36,8 +36,7 @@ function App() {
       <Routes>
         <Route path='/' element={
           <>
-            {/* 배너 슬라이드 */}
-            < Slide />
+       
             {/* 인기 */}
             <RecommendPart />
           </>

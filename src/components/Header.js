@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { changeCat1CVal, changeCat2CVal, changeCat3CVal, changeContentTypeVal, changeGugun, changeGugunVal, changeKeyword, changeRow, changeSido, changeSidoVal } from "../store/store";
+import Slide from "./Slide";
 
 export default function Header() {
   let contentType = useSelector(state => state.contentType)
@@ -57,6 +58,22 @@ export default function Header() {
           <li onClick={() => { navigate('/mylocation') }} >내 주변</li>
         </ul>
       </div>
+      <div className="header-bg-container">
+        <div className="header-bg-area">
+          <div>
+            <p>11111</p>
+          </div>
+          <div>
+            {/* 배너 슬라이드 */}
+            <Slide />
+          </div>
+
+
+        </div>
+      </div>
+
+
+
     </>
   )
 };

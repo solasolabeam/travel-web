@@ -57,6 +57,8 @@ body {
 
 .header-container {
     @extend %mt-20-wd-1200;
+    margin-top: 0;
+    padding-top: 20px;
     display: flex;
     font-size: 40px;
 
@@ -66,25 +68,6 @@ body {
 
     div:nth-child(2) {
         flex-grow: 1;
-    }
-}
-
-.header-slide-container {
-    @extend %mt-20-wd-1200;
-    margin-top: 0px;
-    margin-bottom: 100px;
-
-    .header-slide-area {
-        width: 100%;
-        height: 450px;
-        padding: 5px;
-
-        img {
-            border-radius: 5px;
-            width: 100%;
-            height: 100%;
-            box-shadow: 0px 0px 5px #666;
-        }
     }
 }
 
@@ -108,6 +91,51 @@ body {
         }
     }
 }
+
+.header-bg-container {
+    width: 100%;
+    background: #d1bcbc;
+
+    .header-bg-area {
+        @extend %mt-20-wd-1200;
+
+        height: 550px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        >div {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+
+        }
+
+
+        .header-slide-container {
+            .header-slide-area {
+                display: flex;
+                align-items: center;
+
+                img {
+                    width: 100%;
+                    height: 450px;
+                    object-fit: cover;
+
+                    border-radius: 10px
+                }
+            }
+        }
+
+    }
+}
+
+
+
+
+
 
 .subCat-container {
     @extend %mt-20-wd-1200;
@@ -244,7 +272,7 @@ body {
                 @include card-item(25px, 10px);
                 height: 100px;
                 font-family: 'GmarketSansBold';
-                
+
             }
 
             .card-addr {
@@ -726,18 +754,21 @@ body {
         }
     }
 }
+
 .recommand-wrap {
     @extend %mt-20-wd-1200;
+
     p {
         font-weight: bold;
     }
+
     .recommand-container {
         margin: 20px 0;
-    
+
         .recommand-card-area {
             padding: 5px;
             height: 200px;
-    
+
             img {
                 width: 100%;
                 height: 100%;
@@ -745,7 +776,7 @@ body {
                 box-shadow: 0px 0px 7px #666;
             }
         }
-    
+
     }
 }
 
