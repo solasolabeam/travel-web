@@ -45,7 +45,7 @@ export default function SidoGugun() {
             var url = 'https://apis.data.go.kr/B551011/KorService1/categoryCode1';
             var params = {
                 serviceKey: key,
-                numOfRows: '10',
+                numOfRows: '20',
                 pageNo: '1',
                 MobileOS: 'ETC',
                 MobileApp: 'AppTest',
