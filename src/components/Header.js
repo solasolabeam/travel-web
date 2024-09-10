@@ -63,8 +63,8 @@ export default function Header() {
           <li onClick={() => { navigate('/mylocation') }} >내 주변</li>
         </ul>
       </div>
+      
       <div className="header-bg-container" style={{ background: banner[bannerIdx].bgColor }}>
-      {/* <div className="header-bg-container"> */}
         <div className="header-bg-area">
           <div className="header-bg-left">
             <p>{banner[bannerIdx].title}</p>

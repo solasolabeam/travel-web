@@ -95,6 +95,7 @@ body {
 .header-bg-container {
     width: 100%;
     background: #ffd9d9;
+    margin-bottom: 150px;
 
     .header-bg-area {
         @extend %mt-20-wd-1200;
@@ -144,12 +145,14 @@ body {
                 align-items: center;
                 justify-content: center;
                 width: 100%;
+                padding: 10px;
 
                 img {
                     width: 100%;
                     height: 450px;
                     object-fit: cover;
-                    border-radius: 10px
+                    border-radius: 10px;
+                    box-shadow: 0px 0px 7px #666;
                 }
             }
         }
@@ -807,10 +810,55 @@ body {
                 box-shadow: 0px 0px 7px #666;
             }
         }
+    }
 
+    .recommand-tour-container {
+        margin: 20px 0;
+        position: relative;
+
+        .recommand-tour-area {
+            padding: 5px;
+            height: 350px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 15px;
+                filter: brightness(80%);
+                // box-shadow: 0px 0px 7px #666;
+            }
+
+            >div {
+                position: absolute;
+                top: 80%;
+                left: 10%;
+
+                >p {
+                    margin: 0;
+                    padding: 0;
+                    color: white;
+                    font-family: 'Nanum';
+
+                }
+
+                p:nth-child(1) {
+                    font-size: 25px;
+
+                    @extend %textOverflow;
+                    
+                }
+
+                p:nth-child(2) {
+                    width: 200px;
+                    font-size: 15px;
+                    
+                    @extend %textOverflow;
+                }
+            }
+        }
     }
 }
-
 
 @media screen and (max-width: 1024px) {
     .card-container {

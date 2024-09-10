@@ -7,9 +7,11 @@ import 'swiper/css/pagination';
 import { Autoplay, Pagination } from 'swiper/modules';
 
 import noIMG from '../img/No_Image_Available.jpg';
+import recomTourData from '../data/recomTourData';
+import { useState } from 'react';
 
 export default function RecommendPart() {
-
+  const [tourData, setTourData] = useState(recomTourData)
 
   return (
     <div className='recommand-wrap'>
@@ -28,25 +30,31 @@ export default function RecommendPart() {
         //   disableOnInteraction: false,
         // }}
         modules={[Autoplay, Pagination]}
-        className="recommand-container"
+        className="recommand-tour-container"
       >
 
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
+        {
+          tourData.map((v, i) => {
+            return (
+              <SwiperSlide>
+                <div className="recommand-tour-area">
+                  <img src={`/img/${v.fileName}`} />
+                  <div>
+                    <p>{v.title}</p>
+                    <p>{v.addr}</p></div>
+                </div>
+              </SwiperSlide>
+            )
+          })
+        }
       </Swiper>
 
       <p>문화시설 추천</p>
       <Swiper
         slidesPerView={4}
         spaceBetween={30}
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={(swiper) => console.log('swiper', swiper)}
+        onSlideChange={null}
+        onSwiper={null}
 
         pagination={{
           clickable: true,
@@ -115,7 +123,7 @@ export default function RecommendPart() {
         className="recommand-container"
       >
 
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
+
         <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
         <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
         <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
