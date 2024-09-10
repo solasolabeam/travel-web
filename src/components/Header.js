@@ -41,9 +41,11 @@ export default function Header() {
       {/* 로고 & 페이지 이름 */}
       <div className='header-container'>
         <div>
-          <span style={{ cursor: 'pointer' }} onClick={() => navigate('/')}>구석구석</span>
+          <p style={{ cursor: 'pointer' }} onClick={() => navigate('/')}>소풍메이트</p>
         </div>
-        <div style={{ textAlign: 'right' }} ><span>로그인</span></div>
+        <div>
+          <img src="/sopung.jpg"/>
+        </div>
       </div>
 
       {/* 상단 카테고리 */}
