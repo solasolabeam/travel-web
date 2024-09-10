@@ -64,11 +64,13 @@ export default function Header() {
         </ul>
       </div>
       <div className="header-bg-container" style={{ background: banner[bannerIdx].bgColor }}>
+      {/* <div className="header-bg-container"> */}
         <div className="header-bg-area">
-          <div>
-            <p>11111</p>
+          <div className="header-bg-left">
+            <p>{banner[bannerIdx].title}</p>
+            <p dangerouslySetInnerHTML={{ __html: banner[bannerIdx].tag }}></p>
           </div>
-          <div>
+          <div className="header-bg-right">
             {/* 배너 슬라이드 */}
             <Slide />
           </div>

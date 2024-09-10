@@ -19,10 +19,10 @@ export default function Slide() {
         <>
             <Swiper
                 spaceBetween={30}
-                autoplay={{
-                    delay: 2500,
-                    disableOnInteraction: false,
-                }}
+                // autoplay={{
+                //     delay: 2500,
+                //     disableOnInteraction: false,
+                // }}
                 effect={'fade'}
                 // navigation={true}
                 pagination={{
