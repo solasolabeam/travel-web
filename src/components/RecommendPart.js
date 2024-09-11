@@ -2,9 +2,10 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
+import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 // import required modules
-import { Autoplay, Pagination } from 'swiper/modules';
+import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules';
 
 import noIMG from '../img/No_Image_Available.jpg';
 import recomTourData from '../data/recomTourData';
@@ -19,8 +20,8 @@ export default function RecommendPart() {
       <Swiper
         slidesPerView={4}
         spaceBetween={30}
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={(swiper) => console.log('swiper', swiper)}
+        onSlideChange={null}
+        onSwiper={null}
 
         pagination={{
           clickable: true,
@@ -49,61 +50,57 @@ export default function RecommendPart() {
         }
       </Swiper>
 
-      <p>문화시설 추천</p>
-      <Swiper
-        slidesPerView={4}
-        spaceBetween={30}
-        onSlideChange={null}
-        onSwiper={null}
-
-        pagination={{
-          clickable: true,
-        }}
-        // autoplay={{
-        //   delay: 2500,
-        //   disableOnInteraction: false,
-        // }}
-        modules={[Autoplay, Pagination]}
-        className="recommand-container"
-      >
-
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
-      </Swiper>
-
       <p>행사/공연/축제 추천</p>
       <Swiper
-        slidesPerView={4}
-        spaceBetween={30}
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={(swiper) => console.log('swiper', swiper)}
-
-        pagination={{
-          clickable: true,
+        effect={'coverflow'}
+        grabCursor={true}
+        centeredSlides={true}
+        slidesPerView={'auto'}
+        coverflowEffect={{
+          rotate: 1,     // 슬라이더 회전 각 : 클수록 슬라이딩시 회전이 커짐
+          stretch: 5,   // 슬라이더간 거리(픽셀) : 클수록 슬라이더가 서로 많이 겹침
+          depth: 150,     // 깊이 효과값 : 클수록 멀리있는 느낌이 강해짐
+          modifier: 2,    // 효과 배수 : 위 숫자값들에 이 값을 곱하기 처리하여 효과를 강하게 처리함
+          slideShadows: false, // 슬라이더 그림자 : 3D 효과를 강조하기 위한 회전시 흐릿한 효과
         }}
-        // autoplay={{
-        //   delay: 2500,
-        //   disableOnInteraction: false,
-        // }}
-        modules={[Autoplay, Pagination]}
-        className="recommand-container"
+        pagination={true}
+        modules={[EffectCoverflow, Pagination]}
+        className="recommand-event-container"
       >
+        <SwiperSlide className='recommand-event-area'>
+          <img src="/img/event1.jpg" />
+        </SwiperSlide>
+        <SwiperSlide className='recommand-event-area'>
+          <img src="/img/event2.jpg" />
+        </SwiperSlide>
+        <SwiperSlide className='recommand-event-area'>
+          <img src="/img/event3.jpg" />
+        </SwiperSlide>
+        <SwiperSlide className='recommand-event-area'>
+          <img src="/img/event4.jpg" />
+        </SwiperSlide>
+        <SwiperSlide className='recommand-event-area'>
+          <img src="/img/event5.jpg" />
+        </SwiperSlide>
+        <SwiperSlide className='recommand-event-area'>
+          <img src="/img/event6.jpg" />
+        </SwiperSlide>
+        <SwiperSlide className='recommand-event-area'>
+          <img src="/img/event7.jpg" />
+        </SwiperSlide>
 
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
       </Swiper>
+
+
+
+
+
+
+
+
+
+
+
 
       <p>숙박 추천</p>
       <Swiper
