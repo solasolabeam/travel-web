@@ -44,7 +44,7 @@ export default function Header() {
           <p style={{ cursor: 'pointer' }} onClick={() => navigate('/')}>소풍메이트</p>
         </div>
         <div>
-          <img src="/sopung.jpg"/>
+          <img src="/sopung.png"/>
         </div>
       </div>
 
