@@ -105,7 +105,7 @@ export default function SidoGugun() {
             MobileOS: 'ETC',
             MobileApp: 'AppTest',
             listYN: 'Y',
-            arrange: 'A',
+            arrange: 'R',
             contentTypeId: contentTypeVal,
             areaCode: sidoVal, // 시/도
             sigunguCode: gugunVal, // 구/군
