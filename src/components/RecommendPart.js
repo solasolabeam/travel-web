@@ -4,11 +4,14 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
 // import required modules
-import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules';
+import { Autoplay, Scrollbar, Keyboard, Navigation, EffectCoverflow, Pagination } from 'swiper/modules';
 
 import noIMG from '../img/No_Image_Available.jpg';
 import recomTourData from '../data/recomTourData';
+import recomCulData from '../data/recomCulData';
 import { useState } from 'react';
 
 export default function RecommendPart() {
@@ -102,32 +105,39 @@ export default function RecommendPart() {
 
 
 
-      <p>숙박 추천</p>
+      <p>문화시설 추천</p>
       <Swiper
         slidesPerView={4}
         spaceBetween={30}
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={(swiper) => console.log('swiper', swiper)}
-
+        onSlideChange={null}
+        onSwiper={null}
+        // scrollbar={{
+        //   hide: false,
+        // }}
+        scrollbar={true}
         pagination={{
           clickable: true,
         }}
-        // autoplay={{
-        //   delay: 2500,
-        //   disableOnInteraction: false,
-        // }}
-        modules={[Autoplay, Pagination]}
-        className="recommand-container"
+        modules={[Scrollbar]}
+        className="recommand-common-container"
       >
-
-
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
-        <SwiperSlide><div className="recommand-card-area"><img src={noIMG} /></div></SwiperSlide>
+        {
+          recomCulData.map((v, i) => {
+            return (
+              <SwiperSlide>
+                <div className="recommand-common-area">
+                  <div>
+                    <img src={`/img/${v.fileName}`} />
+                  </div>
+                  <div>
+                    <p>{v.title}</p>
+                    <p>{v.addr}</p>
+                  </div>
+                </div>
+              </SwiperSlide>
+            )
+          })
+        }
       </Swiper>
     </div>
   )
