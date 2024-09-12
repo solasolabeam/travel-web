@@ -15,12 +15,13 @@ export default function MyLocation() {
     const [lng, setLng] = useState(0)       //경도 X좌표
     const [isOpen, setIsOpen] = useState([]) // 인포윈도우 Open 여부를 저장하는 state 입니다.
     const [currentLoc, setCurrentLoc] = useState('')
+    const [contentID, setContentID] = useState('') // 컨텐츠 타입
 
-
+    // 위도경도를 받아서 주소로 변환
     const getAddress = useCallback((lat, lng) => {
         const geocoder = new window.kakao.maps.services.Geocoder();
         const coord = new window.kakao.maps.LatLng(lat, lng);
-        const callback = function (result,status) {
+        const callback = function (result, status) {
             if (status === window.kakao.maps.services.Status.OK) {
                 setCurrentLoc(result[0].address.address_name)
             }
@@ -31,6 +32,7 @@ export default function MyLocation() {
     getAddress(lat, lng)
 
     useEffect(() => {
+        // 주변장소 데이터
         async function getLocation(pos) {
             var url = 'https://apis.data.go.kr/B551011/KorService1/locationBasedList1';
             var params = {
@@ -39,6 +41,7 @@ export default function MyLocation() {
                 pageNo: '1',
                 MobileOS: 'ETC',
                 MobileApp: 'AppTest',
+                contentTypeId: contentID,
                 arrange: 'A', //정렬구분
                 mapX: pos.coords.longitude,     //경도
                 mapY: pos.coords.latitude,     //위도
@@ -56,7 +59,12 @@ export default function MyLocation() {
             const res = await fetch(requrl)
             const data = await res.json()
 
-            setList([...data.response.body.items.item])
+            let item = data.response.body.items.item
+            //관광지 문화시설 행사 숙박 건만
+            item = item.filter(v => {
+                return v.contenttypeid == '12' || v.contenttypeid == '14' || v.contenttypeid == '15' || v.contenttypeid == '32'
+            })
+            setList([...item])
 
             let array = []
             list.forEach(v => {
@@ -64,6 +72,7 @@ export default function MyLocation() {
             })
             setIsOpen(array)
         }
+
 
         function showErrorMsg(error) { // 실패했을때 실행
             switch (error.code) {
@@ -86,8 +95,8 @@ export default function MyLocation() {
         }
 
         navigator.geolocation.getCurrentPosition(getLocation, showErrorMsg);
-        
-    }, [])
+
+    }, [contentID])
 
     return (
         <div className="loc-container">
@@ -98,10 +107,11 @@ export default function MyLocation() {
                     </div>
                     <div>
                         <ul>
-                            <li>관광지</li>
-                            <li>문화시설</li>
-                            <li>행사</li>
-                            <li>숙박</li>
+                            <li onClick={() => setContentID('')}>전체</li>
+                            <li onClick={() => setContentID('12')}>관광지</li>
+                            <li onClick={() => setContentID('14')}>문화시설</li>
+                            <li onClick={() => setContentID('15')}>행사</li>
+                            <li onClick={() => setContentID('32')}>숙박</li>
                         </ul>
                     </div>
 
