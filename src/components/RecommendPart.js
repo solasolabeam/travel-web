@@ -24,7 +24,7 @@ export default function RecommendPart() {
   const location = useLocation()
   return (
     <div className='recommand-wrap'>
-      <p>관광지 추천</p>
+      <p className='comment'>푸른 바다와 오름, 그리고 한 폭의 그림 같은 자연 🏖️</p>
       <Swiper
         slidesPerView={4}
         spaceBetween={30}
@@ -63,7 +63,7 @@ export default function RecommendPart() {
         }
       </Swiper>
 
-      <p>행사/공연/축제 추천</p>
+      <p className='comment'>한국 전역에서 다양한 문화와 즐거움을 한꺼번에 경험 🌟</p>
       <Swiper
         effect={'coverflow'}
         grabCursor={true}
@@ -95,7 +95,7 @@ export default function RecommendPart() {
         }
       </Swiper>
 
-      <p>문화시설 추천</p>
+      <p className='comment'>한국의 역사와 문화를 직접 체험해보세요</p>
       <Swiper
         slidesPerView={4}
         spaceBetween={30}
@@ -134,7 +134,7 @@ export default function RecommendPart() {
         }
       </Swiper>
       
-      <p>숙박시설 추천</p>
+      <p className='comment'>호화로운 온천 리조트에서 편안한 휴식</p>
       <Swiper
         slidesPerView={4}
         spaceBetween={30}

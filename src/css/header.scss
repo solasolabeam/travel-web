@@ -809,12 +809,15 @@ body {
 .recommand-wrap {
     @extend %mt-20-wd-1200;
 
-    p {
+    .comment {
+        margin: 0;
         font-weight: bold;
+        font-family: 'Nanum';
+        font-size: 30px;
     }
 
     .recommand-tour-container {
-        margin: 20px 0;
+        margin: 20px 0 100px 0;
         position: relative;
 
         .recommand-tour-area {
@@ -869,7 +872,7 @@ body {
     }
 
     .recommand-event-container {
-        margin: 20px 0;
+        margin: 20px 0 100px 0;
 
         .recommand-event-area {
             padding: 5px;
@@ -888,7 +891,7 @@ body {
     }
 
     .recommand-common-container {
-        margin: 20px 0;
+        margin: 20px 0 50px 0;
 
         .recommand-common-area {
             padding: 5px;
@@ -935,6 +938,7 @@ body {
                 p:nth-child(1) {
                     font-size: 20px;
                 }
+
                 p:nth-child(2) {
                     color: #666;
                 }
