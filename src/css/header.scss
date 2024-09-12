@@ -104,8 +104,14 @@ body {
             height: 30px;
             // border-bottom: 2px solid black;
             cursor: pointer;
-            font-family: 'GmarketSansMedium';
+            font-family: 'Nanum';
+            font-weight: bold;
             color: #515151;
+
+            &:hover {
+                color: #000;
+                transform: scale(1.2);
+            }
         }
     }
 }
@@ -208,9 +214,15 @@ body {
         }
 
         p {
-            margin: 5px 0 0 0;
-            padding: 0 15px;
+            margin: 0;
+            padding: 2px 20px;
+            font-family: 'Nanum';
+            // font-weight: ;
+            &::before {
+                content: '#';
+            }
         }
+
     }
 
     .subCat-selected {
@@ -242,6 +254,10 @@ body {
         margin-right: 10px;
         border-radius: 5px;
         border: 1px solid $border-grey;
+        font-family: 'Nanum';
+    }
+    option {
+        font-family: 'Nanum';
     }
 
     div {
