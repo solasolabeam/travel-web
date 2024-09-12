@@ -13,18 +13,21 @@ import noIMG from '../img/No_Image_Available.jpg';
 import recomTourData from '../data/recomTourData';
 import recomCulData from '../data/recomCulData';
 import { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function RecommendPart() {
   const [tourData, setTourData] = useState(recomTourData)
 
+  const navigate = useNavigate()
+  const location = useLocation()
   return (
     <div className='recommand-wrap'>
       <p>관광지 추천</p>
       <Swiper
         slidesPerView={4}
         spaceBetween={30}
-        onSlideChange={null}
-        onSwiper={null}
+        // onSlideChange={null}
+        // onSwiper={null}
 
         pagination={{
           clickable: true,
@@ -42,7 +45,12 @@ export default function RecommendPart() {
             return (
               <SwiperSlide>
                 <div className="recommand-tour-area">
-                  <img src={`/img/${v.fileName}`} />
+                  <img src={`/img/${v.fileName}`} onClick={
+                    () =>
+                      navigate(`/${v.tag}/detail/${v.contentid}`, {
+                        state: v
+                      })
+                  } />
                   <div>
                     <p>{v.title}</p>
                     <p>{v.addr}</p></div>
@@ -109,8 +117,8 @@ export default function RecommendPart() {
       <Swiper
         slidesPerView={4}
         spaceBetween={30}
-        onSlideChange={null}
-        onSwiper={null}
+        // onSlideChange={null}
+        // onSwiper={null}
         // scrollbar={{
         //   hide: false,
         // }}

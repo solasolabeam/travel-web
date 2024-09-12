@@ -831,6 +831,7 @@ body {
                 filter: brightness(80%);
                 // box-shadow: 0px 0px 7px #666;
                 transition: all 1s;
+                cursor: pointer;
 
                 &:hover {
                     transform: scale(1.5);
@@ -934,8 +935,6 @@ body {
                     color: #666;
                 }
             }
-
-
         }
     }
 }
