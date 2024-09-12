@@ -12,6 +12,7 @@ import { Autoplay, Scrollbar, Keyboard, Navigation, EffectCoverflow, Pagination 
 import noIMG from '../img/No_Image_Available.jpg';
 import recomTourData from '../data/recomTourData';
 import recomCulData from '../data/recomCulData';
+import recomEventData from '../data/recomEventData';
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -78,27 +79,20 @@ export default function RecommendPart() {
         modules={[EffectCoverflow, Pagination]}
         className="recommand-event-container"
       >
-        <SwiperSlide className='recommand-event-area'>
-          <img src="/img/event1.jpg" />
-        </SwiperSlide>
-        <SwiperSlide className='recommand-event-area'>
-          <img src="/img/event2.jpg" />
-        </SwiperSlide>
-        <SwiperSlide className='recommand-event-area'>
-          <img src="/img/event3.jpg" />
-        </SwiperSlide>
-        <SwiperSlide className='recommand-event-area'>
-          <img src="/img/event4.jpg" />
-        </SwiperSlide>
-        <SwiperSlide className='recommand-event-area'>
-          <img src="/img/event5.jpg" />
-        </SwiperSlide>
-        <SwiperSlide className='recommand-event-area'>
-          <img src="/img/event6.jpg" />
-        </SwiperSlide>
-        <SwiperSlide className='recommand-event-area'>
-          <img src="/img/event7.jpg" />
-        </SwiperSlide>
+        {
+          recomEventData.map((v, i) => {
+            return (
+              <SwiperSlide className='recommand-event-area'>
+                <img src={`/img/${v.fileName}`} onClick={
+                  ()=> navigate(`/${v.tag}/detail/${v.contentid}`, {
+                    state: v
+                  })
+                }/>
+              </SwiperSlide>
+            )
+          })
+        }
+
 
       </Swiper>
 
