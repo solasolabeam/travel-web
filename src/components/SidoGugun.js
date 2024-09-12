@@ -264,7 +264,7 @@ function SubCat({ v }) {
             setIsClicked(!isClicked)
         }, 100);
 
-        dispatch(changeCat3CVal(value))
+        cat3Val == '' ? dispatch(changeCat3CVal(value)) : dispatch(changeCat3CVal(''))
     }
 
     return (
