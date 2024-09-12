@@ -92,20 +92,7 @@ export default function RecommendPart() {
             )
           })
         }
-
-
       </Swiper>
-
-
-
-
-
-
-
-
-
-
-
 
       <p>문화시설 추천</p>
       <Swiper
@@ -129,7 +116,11 @@ export default function RecommendPart() {
               <SwiperSlide>
                 <div className="recommand-common-area">
                   <div>
-                    <img src={`/img/${v.fileName}`} />
+                    <img src={`/img/${v.fileName}`} onClick={
+                      ()=> navigate(`/${v.tag}/detail/${v.contentid}`, {
+                        state: v
+                      })
+                    }/>
                   </div>
                   <div>
                     <p>{v.title}</p>
