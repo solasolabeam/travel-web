@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { changeCat1CVal, changeCat2CVal, changeCat3CVal, changeContentTypeVal, changeGugun, changeGugunVal, changeKeyword, changeRow, changeSido, changeSidoVal } from "../store/store";
 import Slide from "./Slide";
 
@@ -13,6 +13,7 @@ export default function Header() {
   let dispatch = useDispatch()
   let navigate = useNavigate()
   let bannerIdx = useSelector(state => state.bannerIdx)
+
   function getSubCat(code) {
     dispatch(changeContentTypeVal(code))
     dispatch(changeSidoVal(''))
@@ -44,7 +45,7 @@ export default function Header() {
           <p style={{ cursor: 'pointer' }} onClick={() => navigate('/')}>소풍메이트</p>
         </div>
         <div>
-          <img src="/sopung.png"/>
+          <img src="/sopung.png" />
         </div>
       </div>
 
@@ -65,19 +66,26 @@ export default function Header() {
           <li onClick={() => { navigate('/mylocation') }} >내 주변</li>
         </ul>
       </div>
-      
-      <div className="header-bg-container" style={{ background: banner[bannerIdx].bgColor }}>
-        <div className="header-bg-area">
-          <div className="header-bg-left">
-            <p>{banner[bannerIdx].title}</p>
-            <p dangerouslySetInnerHTML={{ __html: banner[bannerIdx].tag }}></p>
-          </div>
-          <div className="header-bg-right">
-            {/* 배너 슬라이드 */}
-            <Slide />
-          </div>
-        </div>
-      </div>
+
+      {/* 상단배너 */}
+      <Banner banner={banner} bannerIdx={bannerIdx} />
     </>
   )
 };
+
+function Banner({ banner, bannerIdx }) {
+  return (
+    <div className="header-bg-container" style={{ background: banner[bannerIdx].bgColor }}>
+      <div className="header-bg-area">
+        <div className="header-bg-left">
+          <p>{banner[bannerIdx].title}</p>
+          <p dangerouslySetInnerHTML={{ __html: banner[bannerIdx].tag }}></p>
+        </div>
+        <div className="header-bg-right">
+          {/* 배너 슬라이드 */}
+          <Slide />
+        </div>
+      </div>
+    </div>
+  )
+}
