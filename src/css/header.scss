@@ -924,9 +924,12 @@ body {
                 align-items: center;
 
                 p {
+                    width: 100%;
+                    text-align: center;
                     font-family: 'Nanum';
                     margin: 0;
                     line-height: 30px;
+                    @extend %textOverflow;
                 }
 
                 p:nth-child(1) {

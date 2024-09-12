@@ -13,6 +13,7 @@ import noIMG from '../img/No_Image_Available.jpg';
 import recomTourData from '../data/recomTourData';
 import recomCulData from '../data/recomCulData';
 import recomEventData from '../data/recomEventData';
+import recomHotelData from '../data/recomHotelData';
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -117,6 +118,45 @@ export default function RecommendPart() {
                 <div className="recommand-common-area">
                   <div>
                     <img src={`/img/${v.fileName}`} onClick={
+                      ()=> navigate(`/${v.tag}/detail/${v.contentid}`, {
+                        state: v
+                      })
+                    }/>
+                  </div>
+                  <div>
+                    <p>{v.title}</p>
+                    <p>{v.addr}</p>
+                  </div>
+                </div>
+              </SwiperSlide>
+            )
+          })
+        }
+      </Swiper>
+      
+      <p>숙박시설 추천</p>
+      <Swiper
+        slidesPerView={4}
+        spaceBetween={30}
+        // onSlideChange={null}
+        // onSwiper={null}
+        // scrollbar={{
+        //   hide: false,
+        // }}
+        scrollbar={true}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Scrollbar]}
+        className="recommand-common-container"
+      >
+        {
+          recomHotelData.map((v, i) => {
+            return (
+              <SwiperSlide>
+                <div className="recommand-common-area">
+                  <div>
+                    <img src={v.firstimage} onClick={
                       ()=> navigate(`/${v.tag}/detail/${v.contentid}`, {
                         state: v
                       })
