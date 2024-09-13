@@ -33,6 +33,7 @@ export default function SidoGugun() {
 
     const [subCat, setSubCat] = useState([]);
     const [allCat1, setAllCat1] = useState([]);
+    const [isClicked, setIsClicked] = useState([])
 
     useEffect(() => {
         getCat1().then((data) => setAllCat1([...data.response.body.items.item]))
@@ -59,7 +60,13 @@ export default function SidoGugun() {
 
             let response = await fetch(requrl)
             let data = await response.json()
-            setSubCat([...data.response.body.items.item])
+
+            let newItem = data.response.body.items.item
+            let array = []
+            newItem.forEach(v => {array.push(false)})
+
+            setIsClicked([...array])
+            setSubCat([...newItem])
         }
 
         tourAPI()
@@ -158,6 +165,25 @@ export default function SidoGugun() {
         dispatch(changeRow(addRow + 1))
     }
 
+    function subCatClick(v, i) {
+        let newItem = []
+
+        isClicked.forEach((val, idx)=> {
+            if(i != idx) {
+                newItem.push(false)
+            } else {
+                newItem.push(!val)
+            }
+        })
+        
+        // 서브카테고리 on/off 감지
+        setIsClicked([...newItem])
+
+        // 서브카테고리 on/off 여부 판별
+        let check = newItem.every(el => el == false)
+        // 클릭한 서브카테고리의 하위데이터 조회
+        check ?  dispatch(changeCat3CVal('')) :  dispatch(changeCat3CVal(v))
+    }
 
     return (
         <>
@@ -195,7 +221,7 @@ export default function SidoGugun() {
                 {
                     subCat.map((v, i) => {
                         return (
-                            <SubCat v={v} key={v.code} />
+                            <div className={isClicked[i] ? 'subCat-selected' : ''} key={v.code} onClick={() => subCatClick(v.code, i)}><p>{v.name}</p></div>
                         )
                     })
 
@@ -247,28 +273,4 @@ function Card(props) {
             }
         </div>
     )
-}
-
-function SubCat({ v }) {
-
-    let dispatch = useDispatch()
-    let cat3Val = useSelector(state => state.cat3Val)
-
-    const [isClicked, setIsClicked] = useState(false)
-    useEffect(() => {
-        setIsClicked(false)
-    }, [cat3Val])
-
-    function subCatClick(value) {
-        setTimeout(() => {
-            setIsClicked(!isClicked)
-        }, 100);
-
-        cat3Val == '' ? dispatch(changeCat3CVal(value)) : dispatch(changeCat3CVal(''))
-    }
-
-    return (
-        <div className={`${isClicked ? 'subCat-selected' : ''}`} key={v.code} onClick={() => subCatClick(v.code)}><p>{v.name}</p></div>
-    )
-
 }
