@@ -63,7 +63,7 @@ export default function Header() {
               )
             })
           }
-          <li onClick={() => { navigate('/mylocation') }} >내 주변</li>
+          <li onClick={() => { navigate('/mylocation') }} >주변장소찾기</li>
         </ul>
       </div>
 
