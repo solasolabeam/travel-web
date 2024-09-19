@@ -5,7 +5,7 @@ import Slide from "./Slide";
 
 import getBannerData from "../data/bannerData";
 import { useEffect, useState } from "react";
-import getSido from "../api/sido";
+import { key } from "../api/key";
 
 export default function Header() {
 
@@ -37,9 +37,28 @@ export default function Header() {
       dispatch(changeCat2CVal('B0201'))
     }
   }
-  
+
   useEffect(() => {
-    getSido().then((data) => dispatch(changeSido([...data.response.body.items.item])))
+    async function getSido() {
+      var url = 'https://apis.data.go.kr/B551011/KorService1/areaCode1';
+      var params = {
+        serviceKey: key,
+        numOfRows: '20',
+        pageNo: '1',
+        MobileOS: 'ETC',
+        MobileApp: 'AppTest',
+      };
+  
+      const queryString = new URLSearchParams(params).toString();  // url에 쓰기 적합한 querySting으로 return 해준다. 
+      const requrl = `${url}?${queryString}&_type=json`;
+  
+      const res = await fetch(requrl)
+      const data = await res.json()
+
+      dispatch(changeSido([...data.response.body.items.item]))
+    }
+
+    getSido()
   }, [])
 
   return (
