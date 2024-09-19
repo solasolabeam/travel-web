@@ -136,6 +136,7 @@ body {
         >div {
             height: 100%;
             display: flex;
+            // flex-wrap: wrap;
         }
 
         .header-bg-left {
@@ -219,6 +220,7 @@ body {
             margin: 0;
             padding: 2px 20px;
             font-family: 'Nanum';
+
             // font-weight: ;
             &::before {
                 content: '#';
@@ -258,6 +260,7 @@ body {
         border: 1px solid $border-grey;
         font-family: 'Nanum';
     }
+
     option {
         font-family: 'Nanum';
     }
@@ -976,5 +979,23 @@ body {
     .card-container {
         grid-template-columns: 400px 400px;
         grid-template-rows: 500px 500px 500px;
+    }
+
+    .header-bg-container {
+        .header-bg-area {
+            height: 900px;
+            flex-direction: column;
+
+            .header-bg-left {
+                width: 80%;
+                flex-direction: column;
+                justify-content: center;
+                gap: 50px;
+            }
+            
+            .header-bg-right {
+                width: 80%;
+            }
+        }
     }
 }
