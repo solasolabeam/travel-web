@@ -2,11 +2,10 @@
 
 import './css/header.scss';
 import './css/slide.scss';
-import getSido from './api/sido';
+
 
 //Components 호출
 import Header from './components/Header';
-import Slide from "./components/Slide";
 import SidoGugun from './components/SidoGugun';
 import RecommendPart from './components/RecommendPart';
 import Footer from './components/Footer';
@@ -15,28 +14,14 @@ import MyLocation from './components/MyLocation';
 
 import { Route, Routes } from 'react-router-dom';
 import getContentType from './api/contentType';
-import { useEffect } from 'react';
-import { changeSido } from './store/store';
-import { useDispatch } from 'react-redux';
-
-
-
-
 
 function App() {
-  let dispatch = useDispatch()
-
-  useEffect(() => {
-    getSido().then((data) => dispatch(changeSido(data.response.body.items.item)))
-  }, [])
-
   return (
     <>
       <Header />
       <Routes>
         <Route path='/' element={
           <>
-       
             {/* 인기 */}
             <RecommendPart />
           </>

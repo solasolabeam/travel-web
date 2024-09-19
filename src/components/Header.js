@@ -4,7 +4,8 @@ import { changeCat1CVal, changeCat2CVal, changeCat3CVal, changeContentTypeVal, c
 import Slide from "./Slide";
 
 import getBannerData from "../data/bannerData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import getSido from "../api/sido";
 
 export default function Header() {
 
@@ -36,6 +37,10 @@ export default function Header() {
       dispatch(changeCat2CVal('B0201'))
     }
   }
+  
+  useEffect(() => {
+    getSido().then((data) => dispatch(changeSido([...data.response.body.items.item])))
+  }, [])
 
   return (
     <>
