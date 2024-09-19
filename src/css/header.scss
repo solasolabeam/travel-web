@@ -983,7 +983,7 @@ body {
 
     .header-bg-container {
         .header-bg-area {
-            height: 900px;
+            height: 550px;
             flex-direction: column;
 
             .header-bg-left {
@@ -992,10 +992,34 @@ body {
                 justify-content: center;
                 gap: 50px;
             }
-            
+
             .header-bg-right {
                 width: 80%;
             }
+
+            .header-slide-container {
+                .header-slide-area {
+                    img {
+                        height: 250px;
+                    }
+                }
+            }
         }
     }
+
+    .header-container {
+        div:nth-child(1) {
+            margin-left: 10px;
+        }
+    }
+
+    .category-container {
+        ul {
+            margin-left: 20px;
+            gap: 50px;
+        }
+    }
+
+
+
 }
