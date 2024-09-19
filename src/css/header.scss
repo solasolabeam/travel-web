@@ -26,6 +26,7 @@
 }
 
 $border-grey : #979797;
+$logo-color : rgb(54, 134, 171);
 
 %textOverflow {
     overflow: hidden;
@@ -72,6 +73,7 @@ body {
         p {
             font-family: 'yangjin';
             font-size: 40px;
+            color: $logo-color;
             margin: 0;
         }
     }
@@ -404,6 +406,7 @@ body {
         div {
             &:nth-child(1) {
                 font-size: 30px;
+                font-family: 'yangjin';
             }
 
             ul {

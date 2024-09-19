@@ -2,7 +2,7 @@ export default function Footer() {
     return (
         <div className='footer-container'>
             <div className="footer-top">
-                <div>구석구석</div>
+                <div>TripMate</div>
                 <div>
                     <ul>
                         <li>개인정보 처리방침</li>
@@ -14,7 +14,7 @@ export default function Footer() {
             </div>
             <div className="footer-bottom">
                 <p>
-                    구석구석  | TEL : 010-8969-7944 | 통신판매업신고 : 제0000-OOOO-000호
+                    TripMate  | TEL : 010-8969-7944 | 통신판매업신고 : 제0000-OOOO-000호
                 </p>
                 <p>
                     Copyright © 구석구석.. All rights reserved.
