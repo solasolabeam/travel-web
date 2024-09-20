@@ -1148,15 +1148,16 @@ body {
         padding: 0 15px;
         flex-direction: column;
         gap: 50px;
-       
+
         >div {
             border: 1px solid rgb(201, 200, 200);
         }
+
         .loc-list {
             width: 100%;
             height: 600px;
 
-            .loc-list-result{
+            .loc-list-result {
                 div {
                     .list-img {
                         width: 30%;
@@ -1170,5 +1171,49 @@ body {
             height: 300px;
         }
     }
-    
+
+    //---상세---
+    .detail-container {
+        padding: 0 100px;
+
+        .detail-img {
+            width: 100%;
+            height: 500px;
+        }
+
+        .detail-desc {
+            letter-spacing: 2.5px;
+            border-radius: 15px;
+            margin: 70px 0;
+
+            p {
+                font-family: 'GmarketSansLight';
+                line-height: 30px;
+                font-size: 20px;
+                margin: 0;
+            }
+        }
+
+        .detail-info {
+            .botton-info-area {
+                .botton-info-flex {
+                    .botton-info-area-tag {
+                        p {
+                            font-size: 15px;
+                        }
+                    }
+                    .botton-info-area-content {
+                        p {
+                            font-size: 15px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .detail-map {
+            margin: 50px 0;
+            height: 400px;
+        }
+    }
 }

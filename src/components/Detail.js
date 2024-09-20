@@ -117,7 +117,7 @@ export default function Detail() {
             <div className="detail-map">
                 <Map
                     center={{ lat: detailData.mapy, lng: detailData.mapx }}
-                    style={{ width: "100%", height: "400px" }}
+                    style={{ width: "100%", height: "100%" }}
                 >
                     <MapMarker position={{ lat: detailData.mapy, lng: detailData.mapx }}></MapMarker>
                 </Map>
