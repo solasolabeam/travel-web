@@ -413,6 +413,7 @@ body {
             }
 
             ul {
+                padding: 10px;
                 display: flex;
                 margin: 0;
                 gap: 10px;
@@ -1104,11 +1105,30 @@ body {
 
     // ---푸터---
     .footer-container {
-        .footer-top {
+        padding: 0 20px;
+        height: 150px;
 
+        .footer-top {
+            div {
+                &:nth-child(1) {
+                    font-size: 25px;
+                    font-family: 'yangjin';
+                }
+
+                ul {
+
+
+                    li {
+                        font-size: 11px;
+                    }
+                }
+            }
         }
+
         .footer-bottom {
-            
+            p {
+                font-size: 11px;
+            }
         }
     }
 }
