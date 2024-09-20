@@ -73,7 +73,7 @@ export default function SidoGugun() {
     }, [contentTypeVal])
 
     function sidoChange(e) {
-        var url = 'http://apis.data.go.kr/B551011/KorService1/areaCode1';
+        var url = 'https://apis.data.go.kr/B551011/KorService1/areaCode1';
         var key = 'WNBEfQ1MXM62Fv6qETObrCjjwWv7ji1iNrMTCVWwk6ET3BB8YmqPhT/uX6boztyIRyPzD40LtfLBGQTcimcXQA==';
         var params = {
             serviceKey: key,
