@@ -1097,12 +1097,6 @@ body {
         }
     }
 
-    // ---카테고리 검색---
-    .card-container {
-        grid-template-columns: 400px 400px;
-        grid-template-rows: 500px 500px 500px;
-    }
-
     // ---푸터---
     .footer-container {
         padding: 0 20px;
@@ -1131,4 +1125,50 @@ body {
             }
         }
     }
+
+    // ---카테고리 검색---
+
+    .card-container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 500px 500px 500px;
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .category-search-container {
+        padding: 15px;
+    }
+
+    .subCat-container {
+        gap: 10px;
+        padding: 15px;
+    }
+
+    .loc-container {
+        padding: 0 15px;
+        flex-direction: column;
+        gap: 50px;
+       
+        >div {
+            border: 1px solid rgb(201, 200, 200);
+        }
+        .loc-list {
+            width: 100%;
+            height: 600px;
+
+            .loc-list-result{
+                div {
+                    .list-img {
+                        width: 30%;
+                    }
+                }
+            }
+        }
+
+        .loc-map {
+            width: 100%; //지도크기
+            height: 300px;
+        }
+    }
+    
 }
