@@ -24,13 +24,26 @@ export default function RecommendPart() {
   const location = useLocation()
   return (
     <div className='recommand-wrap'>
+
+      {/* 관광지 */}
       <p className='comment'>푸른 바다와 오름, 그리고 한 폭의 그림 같은 자연 🏖️</p>
       <Swiper
         slidesPerView={4}
-        spaceBetween={30}
         // onSlideChange={null}
         // onSwiper={null}
-
+        breakpoints={{
+          1024: {
+            slidesPerView: 3,
+            spaceBetween:30
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 15
+          },
+          480: {
+            slidesPerView: 1,
+          }
+        }}
         pagination={{
           clickable: true,
         }}
@@ -63,6 +76,7 @@ export default function RecommendPart() {
         }
       </Swiper>
 
+      {/* 행사 */}
       <p className='comment'>한국 전역에서 다양한 문화와 즐거움을 한꺼번에 경험 🌟</p>
       <Swiper
         effect={'coverflow'}
@@ -95,10 +109,23 @@ export default function RecommendPart() {
         }
       </Swiper>
 
+      {/* 문화시설 */}
       <p className='comment'>한국의 역사와 문화를 직접 체험해보세요</p>
       <Swiper
         slidesPerView={4}
-        spaceBetween={30}
+        breakpoints={{
+          1024: {
+            slidesPerView: 3,
+            spaceBetween:30
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 15
+          },
+          480: {
+            slidesPerView: 1,
+          }
+        }}
         // onSlideChange={null}
         // onSwiper={null}
         // scrollbar={{
@@ -134,10 +161,23 @@ export default function RecommendPart() {
         }
       </Swiper>
       
+      {/* 숙박시설 */}
       <p className='comment'>호화로운 온천 리조트에서 편안한 휴식</p>
       <Swiper
         slidesPerView={4}
-        spaceBetween={30}
+        breakpoints={{
+          1024: {
+            slidesPerView: 3,
+            spaceBetween:30
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 15
+          },
+          480: {
+            slidesPerView: 1,
+          }
+        }}
         // onSlideChange={null}
         // onSwiper={null}
         // scrollbar={{

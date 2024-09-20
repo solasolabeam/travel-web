@@ -976,14 +976,11 @@ body {
 }
 
 @media screen and (max-width: 1024px) {
-    .card-container {
-        grid-template-columns: 400px 400px;
-        grid-template-rows: 500px 500px 500px;
-    }
 
+    // ---메인 페이지---
     .header-bg-container {
         .header-bg-area {
-            height: 550px;
+            height: 600px;
             flex-direction: column;
 
             .header-bg-left {
@@ -1000,7 +997,7 @@ body {
             .header-slide-container {
                 .header-slide-area {
                     img {
-                        height: 250px;
+                        height: 320px;
                     }
                 }
             }
@@ -1020,6 +1017,98 @@ body {
         }
     }
 
+    .recommand-wrap {
+        .comment {
+            margin-left: 15px;
+            font-size: 20px;
+        }
 
+        .recommand-tour-container {
+            >div:first-child {
+                margin-left: 15px;
+            }
 
+            >div:last-child {
+                margin-right: 15px;
+            }
+
+            .recommand-tour-area {
+                height: 280px;
+
+                >div {
+                    position: absolute;
+                    top: 77%;
+                    left: 15%;
+
+                    p:nth-child(1) {
+                        font-size: 15px;
+                    }
+                }
+            }
+
+        }
+
+        .recommand-event-container {
+            .recommand-event-area {
+                padding: 5px;
+                height: 300px;
+                width: 200px;
+                padding: 10px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 15px;
+                    object-fit: fill;
+                }
+
+            }
+        }
+
+        .recommand-common-container {
+            margin-top: 0;
+
+            >div:first-child {
+                margin-left: 15px;
+            }
+
+            >div:last-child {
+                margin-right: 15px;
+            }
+
+            .recommand-common-area {
+                >div:nth-child(1) {
+                    height: 65%;
+                }
+
+                >div:nth-child(2) {
+                    height: 30%;
+
+                    p:nth-child(1) {
+                        font-size: 18px;
+                    }
+
+                    p:nth-child(2) {
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+    }
+
+    // ---카테고리 검색---
+    .card-container {
+        grid-template-columns: 400px 400px;
+        grid-template-rows: 500px 500px 500px;
+    }
+
+    // ---푸터---
+    .footer-container {
+        .footer-top {
+
+        }
+        .footer-bottom {
+            
+        }
+    }
 }
