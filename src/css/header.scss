@@ -976,7 +976,7 @@ body {
     z-index: 5 !important;
 }
 
-@media all and (min-width:480px) and (max-width:1024px) {
+@media all and (max-width:1024px) {
 
     // ---메인 페이지---
     .header-bg-container {
@@ -1127,10 +1127,35 @@ body {
     // ---카테고리 검색---
 
     .card-container {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 500px 500px 500px;
         padding: 15px;
         gap: 15px;
+
+        .card-layout {
+            .card-area {
+                @mixin card-item($fs, $pt) {
+                    margin: 0px;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    padding-top: $pt;
+                    font-size: $fs;
+                }
+
+                .card-tag {
+                    @include card-item(20px, 20px);
+                    color: #5b86af;
+                }
+
+                .card-title {
+                    @include card-item(15px, 10px);
+                    height: 50px;
+
+                }
+
+                .card-addr {
+                    @include card-item(10px, 20px);
+                }
+            }
+        }
     }
 
     .category-search-container {
@@ -1217,7 +1242,7 @@ body {
     }
 }
 
-@media all and (max-width:479px) {
+@media all and (max-width:480px) {
 
     // ---메인 페이지---
     .header-container {
@@ -1389,10 +1414,12 @@ body {
             flex-direction: column;
             align-items: flex-start;
             gap: 10px;
+
             div {
                 text-align: start;
+
                 &:nth-child(1) {
-                    
+
                     font-size: 20px;
                     font-family: 'yangjin';
                 }
@@ -1400,6 +1427,7 @@ body {
                 ul {
                     padding: 0;
                     gap: 10px;
+
                     li {
                         font-size: 7px;
                     }

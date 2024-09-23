@@ -30,7 +30,6 @@ export default function SidoGugun() {
     let headerSearch = useSelector(state => state.headerSearch)
     let addRow = useSelector(state => state.addRow);
 
-
     const [subCat, setSubCat] = useState([]);
     const [allCat1, setAllCat1] = useState([]);
     const [isClicked, setIsClicked] = useState([])
@@ -63,7 +62,7 @@ export default function SidoGugun() {
 
             let newItem = data.response.body.items.item
             let array = []
-            newItem.forEach(v => {array.push(false)})
+            newItem.forEach(v => { array.push(false) })
 
             setIsClicked([...array])
             setSubCat([...newItem])
@@ -168,21 +167,21 @@ export default function SidoGugun() {
     function subCatClick(v, i) {
         let newItem = []
 
-        isClicked.forEach((val, idx)=> {
-            if(i != idx) {
+        isClicked.forEach((val, idx) => {
+            if (i != idx) {
                 newItem.push(false)
             } else {
                 newItem.push(!val)
             }
         })
-        
+
         // 서브카테고리 on/off 감지
         setIsClicked([...newItem])
 
         // 서브카테고리 on/off 여부 판별
         let check = newItem.every(el => el == false)
         // 클릭한 서브카테고리의 하위데이터 조회
-        check ?  dispatch(changeCat3CVal('')) :  dispatch(changeCat3CVal(v))
+        check ? dispatch(changeCat3CVal('')) : dispatch(changeCat3CVal(v))
     }
 
     return (
@@ -246,10 +245,33 @@ export default function SidoGugun() {
 }
 
 function Card(props) {
+    const [cardPixel, setCardPixel] = useState('')
+    useEffect(() => {
+        function getBrowerWidth() {
+            //PC
+            if (1024 < window.innerWidth) {
+                setCardPixel('500px')
+            }
+            //TABLET
+            else if (480 < window.innerWidth) {
+                setCardPixel('350px')
+            }
+            //MOBILE
+            else {
+                setCardPixel('100px')
+            }
+        }
+
+        window.addEventListener('resize', getBrowerWidth)
+
+        return () => {
+            window.removeEventListener('resize', getBrowerWidth)
+        }
+    })
     let navigate = useNavigate()
     let location = useLocation()
     return (
-        <div className='card-container' style={{ gridTemplateRows: `repeat(${props.addRow * 2},500px)` }}>
+        <div className='card-container' style={{ gridTemplateRows: `repeat(${props.addRow * 2},${cardPixel})` }}>
             {
                 props.headerSearch.map((v, i) => {
                     return (
