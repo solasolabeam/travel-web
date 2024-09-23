@@ -41,7 +41,12 @@ export default function RecommendPart() {
             spaceBetween: 15
           },
           480: {
-            slidesPerView: 1,
+            slidesPerView: 3,
+            spaceBetween: 15
+          },
+          0: {
+            slidesPerView: 3,
+            spaceBetween: 5
           }
         }}
         pagination={{
@@ -123,7 +128,12 @@ export default function RecommendPart() {
             spaceBetween: 15
           },
           480: {
-            slidesPerView: 1,
+            slidesPerView: 3,
+            spaceBetween: 15
+          },
+          0: {
+            slidesPerView: 3,
+            spaceBetween: 15
           }
         }}
         // onSlideChange={null}
@@ -175,7 +185,12 @@ export default function RecommendPart() {
             spaceBetween: 15
           },
           480: {
-            slidesPerView: 1,
+            slidesPerView: 3,
+            spaceBetween: 15
+          },
+          0: {
+            slidesPerView: 3,
+            spaceBetween: 15
           }
         }}
         // onSlideChange={null}
