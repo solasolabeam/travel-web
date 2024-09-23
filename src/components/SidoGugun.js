@@ -245,8 +245,9 @@ export default function SidoGugun() {
 }
 
 function Card(props) {
-    const [cardPixel, setCardPixel] = useState('')
+    const [cardPixel, setCardPixel] = useState(0)
     useEffect(() => {
+        getBrowerWidth()
         function getBrowerWidth() {
             //PC
             if (1024 < window.innerWidth) {
@@ -258,7 +259,7 @@ function Card(props) {
             }
             //MOBILE
             else {
-                setCardPixel('100px')
+                setCardPixel('150px')
             }
         }
 

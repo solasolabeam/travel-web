@@ -1451,30 +1451,43 @@ body {
         gap: 15px;
 
         .card-layout {
+            border-radius: 10px;
+
             .card-area {
+                img {
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
+                }
+
                 @mixin card-item($fs, $pt) {
-                    margin: 0px;
-                    padding-left: 20px;
-                    padding-right: 20px;
                     padding-top: $pt;
                     font-size: $fs;
                 }
 
                 .card-tag {
-                    @include card-item(15px, 20px);
+                    @include card-item(7px, 8px);
                     color: #5b86af;
                 }
 
                 .card-title {
-                    @include card-item(10px, 10px);
-                    height: 50px;
+                    @include card-item(6px, 8px);
+                    height: 10px;
 
                 }
 
                 .card-addr {
-                    @include card-item(5px, 20px);
+                    @include card-item(4px, 25px);
                 }
             }
+        }
+    }
+
+    .card-btn {
+        button {
+            padding: 14px;
+            width: 80px;
+            border-radius: 10px;
+            font-size: 10px;
         }
     }
 
@@ -1493,7 +1506,7 @@ body {
             input {
                 padding: 7px;
                 font-size: 20px;
-                width: 350px;
+                width: 200px;
                 border: 1px solid $border-grey;
                 font-size: 10px;
 
@@ -1517,10 +1530,14 @@ body {
         margin: 10px auto;
         gap: 10px;
         padding: 15px;
+
         div {
             border: 1px solid rgb(167, 167, 167);
+            padding: 4px;
+
             p {
-                font-size: 10px;
+                padding: 3px 12px;
+                font-size: 7px;
             }
         }
     }
