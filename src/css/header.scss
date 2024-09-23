@@ -249,13 +249,14 @@ body {
     @extend %mt-20-wd-1200;
     margin: 40px auto;
     display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 
     select {
         padding: 15px;
         font-size: 15px;
         width: 200px;
         text-align: center;
-        margin-right: 10px;
         border-radius: 5px;
         border: 1px solid $border-grey;
         font-family: 'Nanum';
@@ -276,6 +277,8 @@ body {
             outline: none;
             border-radius: 5px;
             border: 1px solid $border-grey;
+            font-family: 'Nanum';
+            font-size: 20px;
 
             &:focus {
                 // box-shadow: 0px 0px 5px #444
@@ -291,7 +294,6 @@ body {
             cursor: pointer;
         }
     }
-
 }
 
 .card-container {
@@ -1445,19 +1447,82 @@ body {
     // ---카테고리 검색---
 
     .card-container {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 500px 500px 500px;
         padding: 15px;
         gap: 15px;
+
+        .card-layout {
+            .card-area {
+                @mixin card-item($fs, $pt) {
+                    margin: 0px;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    padding-top: $pt;
+                    font-size: $fs;
+                }
+
+                .card-tag {
+                    @include card-item(15px, 20px);
+                    color: #5b86af;
+                }
+
+                .card-title {
+                    @include card-item(10px, 10px);
+                    height: 50px;
+
+                }
+
+                .card-addr {
+                    @include card-item(5px, 20px);
+                }
+            }
+        }
     }
 
     .category-search-container {
-        padding: 15px;
+        margin: 10px auto;
+
+        select {
+            padding: 7px;
+            width: 30%;
+            font-size: 10px;
+        }
+
+        div {
+            position: relative;
+
+            input {
+                padding: 7px;
+                font-size: 20px;
+                width: 350px;
+                border: 1px solid $border-grey;
+                font-size: 10px;
+
+                &:focus {
+                    // box-shadow: 0px 0px 5px #444
+                    border: 1px solid black;
+                }
+
+            }
+
+            .search-icon {
+                position: absolute;
+                top: 8px;
+                right: 8px;
+                transform: scale(0.8);
+            }
+        }
     }
 
     .subCat-container {
+        margin: 10px auto;
         gap: 10px;
         padding: 15px;
+        div {
+            border: 1px solid rgb(167, 167, 167);
+            p {
+                font-size: 10px;
+            }
+        }
     }
 
     .loc-container {
