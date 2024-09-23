@@ -712,9 +712,6 @@ body {
 
                 .list-item {
                     width: 50%; //목록
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
 
                     ul {
                         padding: 0;
@@ -1552,12 +1549,50 @@ body {
 
         .loc-list {
             width: 100%;
-            height: 600px;
+            height: 400px;
+
+            .loc-list-search {
+                >div:nth-child(1) {
+                    span {
+                        font-size: 10px;
+                    }
+                }
+
+                ul {
+                    li {
+                        font-size: 10px;
+                    }
+                }
+            }
 
             .loc-list-result {
-                div {
+                >div {
+                    height: 150px;
+
                     .list-img {
                         width: 30%;
+                    }
+
+                    .list-item {
+                        ul {
+                            padding: 0;
+                            margin: 0;
+                            height: 100%;
+
+                            li:nth-child(1) {
+                                font-size: 15px;
+                                padding: 0;
+                                padding-top: 3px;
+                            }
+
+                            li {
+                                font-size: 10px;
+
+                                span {
+                                    transform: scale(0.7);
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -1565,7 +1600,7 @@ body {
 
         .loc-map {
             width: 100%; //지도크기
-            height: 500px;
+            height: 250px;
         }
     }
 
@@ -1644,6 +1679,7 @@ body {
 
             .botton-info-area {
                 padding: 10px;
+
                 .botton-info-flex {
                     .botton-info-area-tag {
                         p {
