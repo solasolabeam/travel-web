@@ -85,7 +85,7 @@ export default function Detail() {
                     detailData.firstimage == '' ?
                         <img src={noIMG} />
                         :
-                        <img src={detailData.firstimage} />
+                        <img src={`${detailData.firstimage.substr(0, 4)}s${detailData.firstimage.substr(4)}`} />
                 }
             </div>
             <div className="detail-desc">
