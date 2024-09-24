@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeCat3CVal, changeGugun, changeGugunVal, changeHeaderSearch, changeKeyword, changeSidoVal } from '../store/store';
 import { useEffect, useState } from "react";
 import { key } from "../api/key";
-import getSido from '../api/sido';
 
 //Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

@@ -9,7 +9,6 @@ import 'swiper/css/scrollbar';
 // import required modules
 import { Autoplay, Scrollbar, Keyboard, Navigation, EffectCoverflow, Pagination } from 'swiper/modules';
 
-import noIMG from '../img/No_Image_Available.jpg';
 import recomTourData from '../data/recomTourData';
 import recomCulData from '../data/recomCulData';
 import recomEventData from '../data/recomEventData';
@@ -21,7 +20,6 @@ export default function RecommendPart() {
   const [tourData, setTourData] = useState(recomTourData)
 
   const navigate = useNavigate()
-  const location = useLocation()
   return (
     <div className='recommand-wrap'>
 
