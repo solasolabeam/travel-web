@@ -177,7 +177,7 @@ export default function MyLocation() {
                                             </div>
                                             <div className="overlay-content">
                                                 <div className="overlay-content-left">
-                                                    {v.firstimage == '' ? <img src={noIMG} /> : <img src={v.firstimage} />}
+                                                    {v.firstimage == '' ? <img src={noIMG} /> : <img src={`${v.firstimage.substr(0, 4)}s${v.firstimage.substr(4)}`} />}
                                                 </div>
                                                 <div className="overlay-content-right">
                                                     <ul>
@@ -227,7 +227,7 @@ function Around({ value }) {
         <div onClick={() => listClick(value)}>
             <div className="list-img">
                 <div>
-                    {value.firstimage == '' ? <img src={noIMG} /> : <img src={value.firstimage} />}
+                    {value.firstimage == '' ? <img src={noIMG} /> : <img src={`${value.firstimage.substr(0, 4)}s${value.firstimage.substr(4)}`} />}
                 </div>
             </div>
             <div className="list-item">

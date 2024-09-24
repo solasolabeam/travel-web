@@ -282,7 +282,7 @@ function Card(props) {
                             })
                         }}>
                             <div className='card-area'>
-                                {v.firstimage == '' ? <img src={noIMG} /> : <img src={v.firstimage} />}
+                                {v.firstimage == '' ? <img src={noIMG} /> : <img src={`${v.firstimage.substr(0, 4)}s${v.firstimage.substr(4)}`} />}
                             </div>
                             <div className='card-area'>
                                 <p className='card-tag'>{v.contentName}</p>
